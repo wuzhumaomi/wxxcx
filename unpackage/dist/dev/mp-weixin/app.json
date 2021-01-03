@@ -1,0 +1,41 @@
+{
+  "pages": [
+    "pages/home-page/index",
+    "pages/me-page/index",
+    "pages/shopping-cart-page/index"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "首页",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#2c2c2c",
+    "selectedColor": "#d81e06",
+    "borderStyle": "white",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/home-page/index",
+        "iconPath": "static/home-page/shouye.png",
+        "selectedIconPath": "static/home-page/shouyefill.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/shopping-cart-page/index",
+        "iconPath": "static/shopping-cart-page/shopping-o.png",
+        "selectedIconPath": "static/shopping-cart-page/shopping.png",
+        "text": "购物车"
+      },
+      {
+        "pagePath": "pages/me-page/index",
+        "iconPath": "static/home-page/geren.png",
+        "selectedIconPath": "static/home-page/gerenfill.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "usingComponents": {}
+}
