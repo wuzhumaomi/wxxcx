@@ -42,8 +42,7 @@
 }
 .comp-input .swiper, .comp-input .uni-padding-wrap {
   height: 60rpx;
-  -webkit-border-radius: 80rpx;
-          border-radius: 80rpx;
+  border-radius: 80rpx;
   font-size: 28rpx;
 }
 .comp-input .swiper .iocn-img2, .comp-input .uni-padding-wrap .iocn-img2 {

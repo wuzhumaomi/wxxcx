@@ -1,4 +1,5 @@
 <script>
+	
 	export default {
 		onLaunch: function() {
 			console.log('App Launch')
@@ -13,6 +14,9 @@
 </script>
 
 <style lang="scss">
+	// \node_modules\@vant\weapp\dist\common
+	@import "uview-ui/index.scss";
+	// @/node_modules/@vant/weapp/dist/$1/index.wxml"
 	/*每个页面公共css */
 	$width100-20: calc(100vw - 40rpx);
 	// 主体

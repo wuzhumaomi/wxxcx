@@ -1,11 +1,25 @@
 {
 	"pages": [
 		{
+		    "path" : "pages/weather_page/weather_page",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		},
+		{
 			"path": "pages/home-page/index",
 			"style": {
 				"navigationBarTitleText": "首页",
 				"navigationBarBackgroundColor":"#550000",
 				"navigationBarTextStyle":"white"
+			}
+		},
+		{
+			"path": "pages/logo-page/logo-page",
+			"style": {
 			}
 		},
 		{
@@ -24,7 +38,8 @@
 				"navigationBarTextStyle":"black"
 			}
 		}
-	],
+        
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "首页",
@@ -55,5 +70,11 @@
         "selectedIconPath": "static/home-page/gerenfill.png",
         "text": "我的"
     }]
-}
+	},
+	// 全局导入vant @import "/node_modules/@vant/weapp/dist/common/index.wxss";	"easycom": {
+		"autoscan": true,
+		"custom":  {
+			"^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
+		}
+	}
 }

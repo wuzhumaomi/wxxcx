@@ -17,7 +17,6 @@
 				</text>		
 			</scroll-view>
 		</view>
-		
 		<!-- 轮播图 -->
 		<view class="uni-padding-wrap-2">
 			<swiper class="swiper" indicator-color='#ffffff' indicator-active-color='#00aaff'  :indicator-dots="indicatorDots" circular='true' :autoplay="autoplay" :interval="interval" :duration="duration">
@@ -63,7 +62,6 @@
 					</view>
 				</view>
 		</uni-list>
-		
 		<!-- 分割线 -->
 		<view class="fg-xian">
 			<view class="xian">
@@ -72,35 +70,18 @@
 				</view>
 			</view>
 		</view>
-		
+		<van-button type="primary">主要按钮</van-button>
 		<!-- 瀑布流div -->
 		<view class="pbl-view">
 				<view class="pbl-view-item"  v-for="(item,index) in listTypecont" :key="index">
-					{{item.name }}
+					<view class="pbl-top">
+						<image src="../../static/shopping-cart-page/wu.png" mode=""></image>
+					</view>
+					<view class="pbl-text">
+						{{item.name }}
+					</view>
 				</view>
 		</view>
-		
-		<!--  -->
-		<!-- <uni-clientdb ref="udb" v-slot:default="{data, pagination, loading, error, options}"
-			:options="options"
-			collection="table1"
-			orderby="createTime desc"
-			field="name,subType,createTime"
-			:getone="false"
-			:action="action"
-			:where="where"
-			@load="onqueryload" 
-			@error="onqueryerror"
-			>
-			<view v-if="error" class="error">{{error.message}}</view>
-			<view v-else class="list">
-				<view v-for="(item, index) in listTypecont" :key="index" class="list-item">
-					{{item.name}}
-				</view>
-			</view>
-			<view v-if="loading" class="loading">加载中...</view>
-		</uni-clientdb> -->
-
 	</view>
 </template>
 
@@ -115,6 +96,24 @@
         options: {}, // 插槽不能访问外面的数据，通过此参数传递, 不支持传递函数
         action: '',
         where: {} ,// 类型为对象或字符串
+				
+				// <!-- 		6666
+				// 	
+				// 		9999 -->
+				items: [{
+					title: "步骤一",
+					desc: "2020-04-01"
+				}, {
+					title: "步骤二",
+					desc: "2020-04-01"
+				}, {
+					title: "步骤三",
+					desc: "2020-04-01"
+				}, {
+					title: "步骤四",
+					desc: "2020-04-01"
+				}],
+				activeSteps: 1,
 				
 				scrollTop: 0,
 				old: {
@@ -174,7 +173,20 @@
 			//     }
 			// });
 		},
+		mounted() {
+			// this.$refs.calendar.show()
+			// this.selectDate()
+		},
+		
 		methods: {
+				//uni-app 方法调用
+				selectDate() {
+					this.$refs.calendar.show();
+				},
+				change(e) {
+					//选择结果
+				 console.log(e);
+				},
 				onqueryload: function(data, ended) {
 					// 可在此处预处理数据，然后再渲染界面
 					console.log(data, ended)
@@ -270,8 +282,6 @@
 				padding: 3rpx 20rpx;
 				height: 40rpx;
 				line-height: 40rpx;
-				color: #ebebeb;
-				font-size: 18rpx;
 				background-color:rgba(209, 209, 209, 0.1);
 				text-align: center;
 				margin-right: 10rpx;
@@ -393,12 +403,37 @@
 				margin-top: 0rpx;
 			}
 			.pbl-view-item{
+				position: relative;
 				height: 600rpx;
 				background-color: #ffffff;
 				box-shadow: 0 0 6px #C8C8C8;
 				border-radius: 20rpx;
 				margin-top: 20rpx;
 				overflow: auto;	
+			}
+			
+			.pbl-top{
+				width: 100%;
+				// background-color: #4CD964;
+				position: absolute;
+				height: 70%;
+				image{
+					position: absolute;
+					width: 100%;
+					height: 100%;
+				}
+			}
+			.pbl-text{
+				bottom: 0;
+				width: 100%;
+				background-color: #A1DCC1;
+				border-top: 2px solid #333333;
+				position: absolute;
+				height: 30%;
+				font-size: 26rpx;
+				padding: 10rpx;
+				color: #333333;
+				font-weight: 600;
 			}
 		}
 	}

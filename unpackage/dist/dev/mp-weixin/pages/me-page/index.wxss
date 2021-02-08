@@ -49,8 +49,7 @@
 .mePage .userBox .userImg {
   width: 100rpx;
   height: 100rpx;
-  -webkit-border-radius: 50%;
-          border-radius: 50%;
+  border-radius: 50%;
   margin-right: 10rpx;
 }
 .mePage .userBox .userName {
@@ -107,8 +106,7 @@
   margin-top: 30rpx;
   width: calc(100% - 40rpx);
   background-color: #FFFFFF;
-  -webkit-border-radius: 15rpx;
-          border-radius: 15rpx;
+  border-radius: 15rpx;
   overflow: hidden;
 }
 .mePage .functionView .uni-grid-item {
@@ -149,9 +147,7 @@
 .mePage .listView {
   width: calc(100% - 40rpx);
   margin-top: 30rpx;
-  -webkit-border-radius: 5rpx;
-          border-radius: 5rpx;
-  -webkit-box-shadow: 0rpx 0rpx 3rpx rgba(0, 0, 0, 0.16);
-          box-shadow: 0rpx 0rpx 3rpx rgba(0, 0, 0, 0.16);
+  border-radius: 5rpx;
+  box-shadow: 0rpx 0rpx 3rpx rgba(0, 0, 0, 0.16);
 }
 

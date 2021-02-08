@@ -1,6 +1,8 @@
 {
   "pages": [
+    "pages/weather_page/weather_page",
     "pages/home-page/index",
+    "pages/logo-page/logo-page",
     "pages/me-page/index",
     "pages/shopping-cart-page/index"
   ],

@@ -47,8 +47,7 @@
 /* 透明度 */
 /* 文章场景相关 */
 .shopping-cart-page .btn-view {
-  -webkit-box-shadow: 0 0 5px #e3e3e3;
-          box-shadow: 0 0 5px #e3e3e3;
+  box-shadow: 0 0 5px #e3e3e3;
   position: absolute;
   height: 80rpx;
   background-color: #ffffff;
@@ -77,8 +76,7 @@
 .shopping-cart-page .btn-view .right-btn {
   width: 200rpx;
   height: 60rpx;
-  -webkit-border-radius: 30rpx;
-          border-radius: 30rpx;
+  border-radius: 30rpx;
   padding: 0 !important;
   line-height: 60rpx;
 }
