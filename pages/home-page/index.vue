@@ -22,17 +22,22 @@
 			<swiper class="swiper" indicator-color='#ffffff' indicator-active-color='#00aaff'  :indicator-dots="indicatorDots" circular='true' :autoplay="autoplay" :interval="interval" :duration="duration">
 					<swiper-item>
 							<view class="swiper-item uni-bg-red">
-								<image src="../../static/home-page/gg01.jpg" mode=""></image>
+								<image src="/static/home-page/gg04.jpg" mode=""></image>
 							</view>
 					</swiper-item>
 					<swiper-item>
 							<view class="swiper-item uni-bg-green">
-								<image src="../../static/home-page/gg02.jpg" mode=""></image>
+								<image src="/static/home-page/gg03.jpg" mode=""></image>
+							</view>
+					</swiper-item>
+					<swiper-item>
+							<view class="swiper-item uni-bg-green">
+								<image src="/static/home-page/gg02.jpg" mode=""></image>
 							</view>
 					</swiper-item>
 					<swiper-item>
 							<view class="swiper-item uni-bg-blue">
-								<image src="../../static/home-page/gg01.jpg" mode=""></image>
+								<image src="/static/home-page/gg01.jpg" mode=""></image>
 							</view>
 					</swiper-item>
 			</swiper>
@@ -43,7 +48,7 @@
 				<uni-list-item class="list-item"  title="专业质检" rightText="右侧文字" link="reLaunch">
 					<!-- 自定义 footer-->
 					<template class="list-tem1" slot="footer">
-							{{6666}}
+							详情
 					</template>
 					<template class="list-tem2" slot="header">
 							<image src="../../static/home-page/safeguard.png" class="icon-img" mode=""></image>
@@ -70,26 +75,56 @@
 				</view>
 			</view>
 		</view>
-		<van-button type="primary">主要按钮</van-button>
+		
+		<u-waterfall v-model="listTypecont2">
+			<template v-slot:left="{leftList}">
+				<view class="pbl-view-item leftList" v-for="(item, index) in leftList" :key="index">
+					<!-- 这里编写您的内容，item为您传递给v-model的数组元素 -->
+					<spCom :item='item'></spCom>
+				</view>
+			</template>
+			<template v-slot:right="{rightList}">
+				<view class="pbl-view-item" v-for="(item, index) in rightList" :key="index">
+					<!-- 这里编写您的内容，item为您传递给v-model的数组元素 -->
+					<spCom :item='item'></spCom>
+				</view>
+			</template>
+		</u-waterfall>
+		
+		
 		<!-- 瀑布流div -->
-		<view class="pbl-view">
-				<view class="pbl-view-item"  v-for="(item,index) in listTypecont" :key="index">
+<!-- 		<view class="pbl-view">
+				<view class="pbl-view-item"  v-for="(item,index) in listTypecont2" :key="index">
 					<view class="pbl-top">
-						<image src="../../static/shopping-cart-page/wu.png" mode=""></image>
+						<image :src="item.src" mode=""></image>
+					
 					</view>
 					<view class="pbl-text">
 						{{item.name }}
+						<view class="pbl-text-bot">
+							<view class="text01">
+								{{Math.ceil(Math.random() * 1000) }}
+							</view>
+							<view class="text02">
+								卷后价 
+							</view>
+							<view class="text03">
+								{{Math.ceil(Math.random() * 99) }}人付款
+							</view>
+						</view>
 					</view>
 				</view>
-		</view>
+		</view> -->
 	</view>
 </template>
 
 <script>
 	import CompInput from '@/pages/components/comp-input/index.vue'
+	import spCom from '@/pages/components/sp-com/index.vue'
 	export default {
 		components:{
-			CompInput
+			CompInput,
+			spCom
 		},
 		data() {
 			return {
@@ -120,7 +155,7 @@
 					scrollTop: 0
 				},
 				listTypecont:[
-					{name:"限时加价10%"},
+					{name:"限时打折30%"},
 					{name:"小米9"},
 					{name:"苹果6"},
 					{name:"苹果8"},
@@ -131,6 +166,19 @@
 					{name:"苹果"},
 					{name:"洗衣机"},
 					{name:"冰箱"},
+				],
+				
+					// <image v-if="index%4==0" src="/static/shopping-cart-page/wu04.jpg" mode=""></image>
+					// <image v-else-if="index%5==0" src="/static/shopping-cart-page/wu05.jpg" mode=""></image>
+					// <image v-else-if="index%3==0" src="../../static/shopping-cart-page/wu03.jpg" mode=""></image>
+					// <image v-else-if="index%2==0" src="../../static/shopping-cart-page/wu02.jpg" mode=""></image>
+					// <image v-else src="../../static/shopping-cart-page/wu01.jpg" mode=""></image>
+				listTypecont2:[
+					{name:"安徽销量过百 五年老店新年花束",src:'/static/shopping-cart-page/wu04.jpg'},
+					{name:"[立减300元+顺丰包邮 中国移动国旗]苹果12",src:'/static/shopping-cart-page/wu01.jpg'},
+					{name:"情侣礼物正品ck对戒",src:'/static/shopping-cart-page/wu02.jpg'},
+					{name:"本命年礼物和田玉朱砂手链",src:'/static/shopping-cart-page/wu03.jpg'},
+					{name:"天然翡翠戒指男士帝王绿",src:'/static/shopping-cart-page/wu05.jpg'},
 				],
 				// 轮播图
 				background: ['color1', 'color2', 'color3'],
@@ -144,9 +192,9 @@
     },
     onReachBottom() { //滚动到底翻页
       // this.$refs.udb.loadMore()
-			this.listTypecont=[
-				...this.listTypecont,
-				...this.listTypecont
+			this.listTypecont2=[
+				...this.listTypecont2,
+				...this.listTypecont2
 			]
     },
 		onShow(){
@@ -293,13 +341,12 @@
 			border-radius: 20rpx;
 			overflow: hidden;
 			margin-top: 20rpx;
-			height: 150rpx;
+			height: 300rpx;
 			width: $width100-40;
-			background-color: #007AFF;
 			.swiper-item {
 				image{
 					width: 100%;
-					height: 150rpx;
+					height: 300rpx;
 					position: absolute;
 				}
 				
@@ -330,8 +377,8 @@
 				flex-direction: row;
 				align-items: center;
 				
-				color: #a5a5a5!important;
-				font-size: 20rpx!important;
+				color: #ffffff!important;
+				font-size: 29rpx!important;
 			}
 			.list-tem2{
 				width: 70rpx;
@@ -391,50 +438,82 @@
 		}
 		
 		// 瀑布流布局
-		.pbl-view{
-			width: $width100-40;
-			column-count:2;
-			column-gap: 20rpx;
+		// .pbl-view{
+		// .pbl-view{
+		// 	width: $width100-40;
+		// 	column-count:2;
+		// 	column-gap: 20rpx;
+		// }
+		// .pbl_view,.pbl-view{
 			
-			.pbl-view-item:nth-child(3){
-				height: 400rpx!important;
-			}
-			.pbl-view-item:first-child{
-				margin-top: 0rpx;
-			}
-			.pbl-view-item{
-				position: relative;
-				height: 600rpx;
-				background-color: #ffffff;
-				box-shadow: 0 0 6px #C8C8C8;
-				border-radius: 20rpx;
-				margin-top: 20rpx;
-				overflow: auto;	
-			}
+		// 	// .pbl-view-item:nth-child(3){
+		// 	// 	height: 450rpx!important;
+		// 	// }
+		// 	.pbl-view-item:first-child{
+		// 		margin-top: 0rpx;
+		// 	}
 			
-			.pbl-top{
-				width: 100%;
-				// background-color: #4CD964;
-				position: absolute;
-				height: 70%;
-				image{
-					position: absolute;
-					width: 100%;
-					height: 100%;
-				}
-			}
-			.pbl-text{
-				bottom: 0;
-				width: 100%;
-				background-color: #A1DCC1;
-				border-top: 2px solid #333333;
-				position: absolute;
-				height: 30%;
-				font-size: 26rpx;
-				padding: 10rpx;
-				color: #333333;
-				font-weight: 600;
-			}
+		// 	.pbl-top{
+		// 		width: 100%;
+		// 		// background-color: #4CD964;
+		// 		position: absolute;
+		// 		height: 70%;
+		// 		image{
+		// 			position: absolute;
+		// 			width: 100%;
+		// 			height: 100%;
+		// 		}
+		// 	}
+		// 	.pbl-text{
+		// 		bottom: 0;
+		// 		width: 100%;
+		// 		// background-color: #A1DCC1;
+		// 		// border-top: 2px solid #333333;
+		// 		position: absolute;
+		// 		height: 30%;
+		// 		font-size: 26rpx;
+		// 		padding: 20rpx;
+		// 		color: #333333;
+		// 		// font-weight: 600;
+		// 		// 标价哪一行
+		// 		.pbl-text-bot{
+		// 			position: absolute;
+		// 			display: flex;
+				
+		// 			flex-direction: row;
+		// 			align-items: baseline;
+		// 			width: 100%;
+		// 			bottom: 20rpx;
+		// 			.text01,.text02,.text03{
+		// 				margin-right: 10rpx;
+		// 			}
+		// 			.text01{
+		// 				color: $u-type-error;
+		// 				font-size: 40rpx;
+		// 			}
+		// 			.text02{
+		// 				color: $u-type-error;
+		// 				font-size: 20rpx;
+		// 			}
+		// 			.text03{
+		// 				color: $u-type-info;
+		// 				font-size: 18rpx;
+		// 			}
+		// 		}
+		// 	}
+		// }
+		.pbl-view-item{
+			position: relative;
+			height: 600rpx;
+			background-color: #ffffff;
+			box-shadow: 0 0 6px #C8C8C8;
+			border-radius: 20rpx;
+			margin: 10rpx;
+			margin-top: 20rpx;
+			overflow: auto;	
+		}
+		.leftList:nth-child(1){
+			height: 550rpx!important;
 		}
 	}
 </style>

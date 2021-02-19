@@ -1,1 +1,1 @@
-.advertisingView{width:calc(100% - 40rpx);margin-top:30rpx}
+.advertisingView{margin-top:30rpx}

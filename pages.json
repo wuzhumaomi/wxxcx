@@ -1,13 +1,9 @@
 {
 	"pages": [
 		{
-		    "path" : "pages/weather_page/weather_page",
-		    "style" :                                                                                    
-		    {
-		        "navigationBarTitleText": "",
-		        "enablePullDownRefresh": false
-		    }
-		    
+			"path": "pages/logo-page/logo-page",
+			"style": {
+			}
 		},
 		{
 			"path": "pages/home-page/index",
@@ -18,9 +14,12 @@
 			}
 		},
 		{
-			"path": "pages/logo-page/logo-page",
-			"style": {
-			}
+		    "path" : "pages/weather_page/weather_page",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "今日天气",
+		        "enablePullDownRefresh": false
+		    }
 		},
 		{
 			"path": "pages/me-page/index",
@@ -64,6 +63,11 @@
         "iconPath": "static/shopping-cart-page/shopping-o.png",
         "selectedIconPath": "static/shopping-cart-page/shopping.png",
         "text": "购物车"
+    },{
+        "pagePath": "pages/weather_page/weather_page",
+        "iconPath": "static/home-page/geren.png",
+        "selectedIconPath": "static/home-page/gerenfill.png",
+        "text": "天气"
     },{
         "pagePath": "pages/me-page/index",
         "iconPath": "static/home-page/geren.png",

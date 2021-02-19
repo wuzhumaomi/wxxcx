@@ -23,7 +23,7 @@
 <style>
 	// 广告
 	.advertisingView{
-		width: calc(100% - 40rpx) ;
+		/* width: calc(100% - 40rpx) ; */
 		margin-top: 30rpx;
 	}
 </style>

@@ -1,0 +1,1 @@
+<block wx:for="{{leftList}}" wx:for-item="item" wx:for-index="index" wx:key="index"><view class="pbl-view-item leftList"><sp-com vue-id="{{'14efdc4f-5-'+index}}" item="{{item}}" bind:__l="__l"></sp-com></view></block>

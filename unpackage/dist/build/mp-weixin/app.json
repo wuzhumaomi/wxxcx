@@ -1,6 +1,8 @@
 {
   "pages": [
+    "pages/logo-page/logo-page",
     "pages/home-page/index",
+    "pages/weather_page/weather_page",
     "pages/me-page/index",
     "pages/shopping-cart-page/index"
   ],
@@ -28,6 +30,12 @@
         "iconPath": "static/shopping-cart-page/shopping-o.png",
         "selectedIconPath": "static/shopping-cart-page/shopping.png",
         "text": "购物车"
+      },
+      {
+        "pagePath": "pages/weather_page/weather_page",
+        "iconPath": "static/home-page/geren.png",
+        "selectedIconPath": "static/home-page/gerenfill.png",
+        "text": "天气"
       },
       {
         "pagePath": "pages/me-page/index",

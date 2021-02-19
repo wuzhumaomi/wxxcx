@@ -1,0 +1,1 @@
+<view><view class="pbl-top"><image src="{{item.src}}" mode></image></view><view class="pbl-text">{{''+item.name+''}}<view class="pbl-text-bot"><view class="text01">{{''+$root.g0+''}}</view><view class="text02">卷后价</view><view class="text03">{{''+$root.g1+'人付款'}}</view></view></view></view>

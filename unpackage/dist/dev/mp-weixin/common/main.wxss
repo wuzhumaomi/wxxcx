@@ -3317,7 +3317,7 @@ u-dropdown {
 /*每个页面公共css */
 .container {
   width: 100vw;
-  height: calc(100vh - 64rpx);
+  height: calc(100vh - 24rpx);
   padding: 20rpx;
   overflow: hidden;
 }
@@ -3328,5 +3328,6 @@ page {
   border-radius: 15rpx !important;
   box-shadow: 0 0 10rpx #d4d4d4 !important;
   overflow: hidden;
+  background-color: #FFFFFF;
 }
 

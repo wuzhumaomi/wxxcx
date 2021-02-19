@@ -22,7 +22,7 @@
 	// 主体
 	.container{
 		width: 100vw;
-		height: calc(100vh - 64rpx);
+		height: calc(100vh - 24rpx);
 		padding: 20rpx;
 		// background: #F1F5F8;
 		overflow: hidden;
@@ -47,6 +47,7 @@
 		border-radius: 15rpx !important;
 		box-shadow: 0 0 10rpx #d4d4d4 !important;
 		overflow: hidden;
+		background-color: #FFFFFF;
 		// border: 1rpx solid #0000FF;
 	}
 </style>

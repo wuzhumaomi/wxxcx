@@ -1,14 +1,15 @@
 <template>
 	<view>
-	<u-picker mode="region" :area-code='areaCode' v-model="show" :params="params"></u-picker>
 		
 	<u-button type="primary" @click='show = true'>更换城市</u-button>
-	
-	城市：{{tianQiInfo.provinceName + '-' + tianQiInfo.city}}<br>
+	<u-picker mode="region" v-model="show" @confirm='onConfirm' :area-code='areaCode'></u-picker>
+	城市：{{tianQiInfo.provinceName + ' - ' + tianQiInfo.city}}<br>
+	天气情况：{{tianQiInfo.realtime.weather}}<br>
+	体感温度：{{tianQiInfo.realtime.temp}}<br>
 	PM 2.5：{{tianQiInfo.pm25.pm25}}<br>
 	空气质量：{{tianQiInfo.pm25.quality}}<br>
-	空气质量指数超越城市百分比：{{tianQiInfo.pm25.cityrank}}<br>
-	
+	空气质量指数超越全国{{tianQiInfo.pm25.cityrank}}%城市<br>
+	<text class="text-class01">未来几天天气</text>
 	<view v-for="(item,index) in tianQiInfo.weathers" :key="index">
 		<u-divider color="#fa3534">{{item.week}}</u-divider>
 		</br>
@@ -31,7 +32,7 @@
 				tianQiInfo:'',
 				// 默认合肥
 				cs:'101220101',
-				areaCode:["13", "1303", "130304"],
+				areaCode:["34", "3401", "340104"],
 				params: {
 									year: true,
 									month: true,
@@ -1441,27 +1442,53 @@
 			};
 		},
 		created() {
-			uni.request({
-			    url: 'http://aider.meizu.com/app/weather/listWeather?cityIds='+this.cs, //仅为示例，并非真实接口地址。
-			    data: {
-			        text: 'uni.request'
-			    },
-					method:'get',
-			    header: {
-			       'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' //自定义请求头信息
-			    },
-			    success: (res) => {
-			        console.log(res.data.value[0]);
-							this.tianQiInfo = res.data.value[0]
-			    }
-			});
+			this.onListWeather(this.cs)
 		},
+		
 		methods:{
+			onListWeather(cityIds){
+				uni.request({
+						url: 'http://aider.meizu.com/app/weather/listWeather?cityIds='+cityIds, //仅为示例，并非真实接口地址。
+						data: {
+								text: 'uni.request'
+						},
+						method:'get',
+						header: {
+							 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' //自定义请求头信息
+						},
+						success: (res) => {
+								console.log(res.data.value[0]);
+								this.tianQiInfo = res.data.value[0]
+								console.log(' 消息 ',this.tianQiInfo);
+						}
+				});
+			},
+			onConfirm(res){
+				console.log(res);
+				// area 区
+				// city 市
+				// province 省
+				// cs_data cities
 			
+				this.cs_data.cities.forEach(element => {
+				  if(element.city+'市' == res.city.label ){
+						console.log(element.city , res.city.label,res.city.cityid);
+						this.cs = element.cityid
+						this.onListWeather(this.cs)
+						return
+					}
+				});
+			}
 		}
 	}
 </script>
 
 <style lang="scss">
-
+	.text-class01{
+		display: block;
+		width: 100%;
+		text-align: center;
+		font-size: 34rpx;
+		font-weight: 600;
+	}
 </style>

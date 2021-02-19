@@ -51,21 +51,21 @@
   height: 100rpx;
   border-radius: 50%;
   margin-right: 10rpx;
+  overflow: hidden;
 }
 .mePage .userBox .userName {
   font-size: 38rpx;
   font-weight: 600;
-  color: #333333;
+  color: #303133;
   margin-bottom: 18rpx;
 }
 .mePage .userBox .userText {
   font-size: 24rpx;
   font-weight: 600;
-  color: #666666;
+  color: #FFFFFF;
 }
 .mePage .topView-bot {
   margin-top: 30rpx;
-  width: calc(100% - 40rpx);
   height: 10vh;
   background-color: #fff;
   display: -webkit-box;
@@ -104,7 +104,6 @@
 }
 .mePage .functionView {
   margin-top: 30rpx;
-  width: calc(100% - 40rpx);
   background-color: #FFFFFF;
   border-radius: 15rpx;
   overflow: hidden;
@@ -141,13 +140,12 @@
           align-items: center;
 }
 .mePage .advertisingView {
-  width: calc(100% - 40rpx);
   margin-top: 30rpx;
 }
 .mePage .listView {
-  width: calc(100% - 40rpx);
   margin-top: 30rpx;
   border-radius: 5rpx;
   box-shadow: 0rpx 0rpx 3rpx rgba(0, 0, 0, 0.16);
+  background-color: width;
 }
 

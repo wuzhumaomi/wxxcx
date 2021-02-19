@@ -91,13 +91,12 @@
   border-radius: 20rpx;
   overflow: hidden;
   margin-top: 20rpx;
-  height: 150rpx;
+  height: 300rpx;
   width: calc(100vw - 40rpx);
-  background-color: #007AFF;
 }
 .homePage .uni-padding-wrap-2 .swiper-item image {
   width: 100%;
-  height: 150rpx;
+  height: 300rpx;
   position: absolute;
 }
 .homePage .list {
@@ -130,8 +129,8 @@
   -webkit-box-align: center;
   -webkit-align-items: center;
           align-items: center;
-  color: #a5a5a5 !important;
-  font-size: 20rpx !important;
+  color: #ffffff !important;
+  font-size: 29rpx !important;
 }
 .homePage .list-item .list-tem2 {
   width: 70rpx;
@@ -209,48 +208,17 @@
   font-size: 23rpx;
   background-color: #F1F5F8;
 }
-.homePage .pbl-view {
-  width: calc(100vw - 40rpx);
-  -webkit-column-count: 2;
-          column-count: 2;
-  -webkit-column-gap: 20rpx;
-          column-gap: 20rpx;
-}
-.homePage .pbl-view .pbl-view-item:nth-child(3) {
-  height: 400rpx !important;
-}
-.homePage .pbl-view .pbl-view-item:first-child {
-  margin-top: 0rpx;
-}
-.homePage .pbl-view .pbl-view-item {
+.homePage .pbl-view-item {
   position: relative;
   height: 600rpx;
   background-color: #ffffff;
   box-shadow: 0 0 6px #C8C8C8;
   border-radius: 20rpx;
+  margin: 10rpx;
   margin-top: 20rpx;
   overflow: auto;
 }
-.homePage .pbl-view .pbl-top {
-  width: 100%;
-  position: absolute;
-  height: 70%;
-}
-.homePage .pbl-view .pbl-top image {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-.homePage .pbl-view .pbl-text {
-  bottom: 0;
-  width: 100%;
-  background-color: #A1DCC1;
-  border-top: 2px solid #333333;
-  position: absolute;
-  height: 30%;
-  font-size: 26rpx;
-  padding: 10rpx;
-  color: #333333;
-  font-weight: 600;
+.homePage .leftList:nth-child(1) {
+  height: 550rpx !important;
 }
 
