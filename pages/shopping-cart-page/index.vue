@@ -1,8 +1,8 @@
 <template>
 	<view class="view shopping-cart-page">
 		<view class="image-view">
-			<image  src="../../static/shopping-cart-page/wu.png" mode=""></image>
-			<span>暂无符合条件的商品</span>
+			<!-- <image  src="../../static/shopping-cart-page/wu.png" mode=""></image> -->
+			<u-empty class='img' text="暂无符合条件的商品" mode="car"></u-empty>
 		</view>
 		
 		<!-- 购物条 -->
@@ -85,6 +85,9 @@
 </style>
 <style lang="scss">
 .shopping-cart-page{
+	.img{
+		margin-top: 10vh;
+	}
 	.btn-view{
 		box-shadow: 0 0 5px #e3e3e3;
 		position: absolute;

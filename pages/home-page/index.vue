@@ -22,22 +22,22 @@
 			<swiper class="swiper" indicator-color='#ffffff' indicator-active-color='#00aaff'  :indicator-dots="indicatorDots" circular='true' :autoplay="autoplay" :interval="interval" :duration="duration">
 					<swiper-item>
 							<view class="swiper-item uni-bg-red">
-								<image src="/static/home-page/gg04.jpg" mode=""></image>
+								<image src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3909456747,3106626911&fm=26&gp=0.jpg" mode=""></image>
 							</view>
 					</swiper-item>
 					<swiper-item>
 							<view class="swiper-item uni-bg-green">
-								<image src="/static/home-page/gg03.jpg" mode=""></image>
+								<image src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2212404846,3833584083&fm=15&gp=0.jpg" mode=""></image>
 							</view>
 					</swiper-item>
 					<swiper-item>
 							<view class="swiper-item uni-bg-green">
-								<image src="/static/home-page/gg02.jpg" mode=""></image>
+								<image src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2112194621,1602884939&fm=26&gp=0.jpg" mode=""></image>
 							</view>
 					</swiper-item>
 					<swiper-item>
 							<view class="swiper-item uni-bg-blue">
-								<image src="/static/home-page/gg01.jpg" mode=""></image>
+								<image src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=223935294,2063648832&fm=26&gp=0.jpg" mode=""></image>
 							</view>
 					</swiper-item>
 			</swiper>
@@ -174,11 +174,11 @@
 					// <image v-else-if="index%2==0" src="../../static/shopping-cart-page/wu02.jpg" mode=""></image>
 					// <image v-else src="../../static/shopping-cart-page/wu01.jpg" mode=""></image>
 				listTypecont2:[
-					{name:"安徽销量过百 五年老店新年花束",src:'/static/shopping-cart-page/wu04.jpg'},
-					{name:"[立减300元+顺丰包邮 中国移动国旗]苹果12",src:'/static/shopping-cart-page/wu01.jpg'},
-					{name:"情侣礼物正品ck对戒",src:'/static/shopping-cart-page/wu02.jpg'},
-					{name:"本命年礼物和田玉朱砂手链",src:'/static/shopping-cart-page/wu03.jpg'},
-					{name:"天然翡翠戒指男士帝王绿",src:'/static/shopping-cart-page/wu05.jpg'},
+					{name:"安徽销量过百 五年老店新年花束",src:'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1247644627,2742962773&fm=15&gp=0.jpg'},
+					{name:"[立减300元+顺丰包邮 中国移动国旗]苹果12",src:'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2052753110,724684217&fm=11&gp=0.jpg'},
+					{name:"情侣礼物正品ck对戒",src:'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2277377935,230871943&fm=26&gp=0.jpg'},
+					{name:"本命年礼物和田玉朱砂手链",src:'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1992208937,1326357604&fm=26&gp=0.jpg'},
+					{name:"天然翡翠戒指男士帝王绿",src:'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3374683313,684776267&fm=26&gp=0.jpg'},
 				],
 				// 轮播图
 				background: ['color1', 'color2', 'color3'],
@@ -233,11 +233,11 @@
 				},
 				change(e) {
 					//选择结果
-				 console.log(e);
+				 // console.log(e);
 				},
 				onqueryload: function(data, ended) {
 					// 可在此处预处理数据，然后再渲染界面
-					console.log(data, ended)
+					// console.log(data, ended)
 				},
 				onqueryerror(e) {
 					// 加载数据失败

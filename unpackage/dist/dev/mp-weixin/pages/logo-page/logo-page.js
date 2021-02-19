@@ -169,14 +169,14 @@ var _default =
     wx.getUserInfo({
       lang: 'zh_CN',
       success: function success(res) {
-        console.log(res.userInfo);
+        // console.log(res.userInfo);
       } });
 
   },
   methods: {
     wxGetUserInfo: function wxGetUserInfo(res) {
       this.userInfo = res.detail.userInfo;
-      console.log(res.detail);
+      // console.log(res.detail)
       this.getUserInfo();
     },
     getUserInfo: function getUserInfo() {
@@ -185,7 +185,7 @@ var _default =
         provider: 'weixin',
         lang: 'zh_CN',
         success: function success(infoRes) {
-          console.log('用户昵称为：', infoRes.userInfo);
+          // console.log('用户昵称为：' , infoRes.userInfo);
           if (infoRes.userInfo) {
             _t.userInfo = infoRes.userInfo;
             uni.switchTab({

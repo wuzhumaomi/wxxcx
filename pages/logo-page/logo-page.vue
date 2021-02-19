@@ -37,14 +37,14 @@
 			wx.getUserInfo({
 				lang:'zh_CN',
 				success: res => {
-					console.log(res.userInfo);
+					// console.log(res.userInfo);
 				}
 			})
 		},
 		methods: {
 			wxGetUserInfo(res){
 				this.userInfo = res.detail.userInfo
-				console.log(res.detail)
+				// console.log(res.detail)
 				this.getUserInfo()
 			},
 			getUserInfo(){
@@ -53,7 +53,7 @@
 				  provider: 'weixin',
 					lang:'zh_CN',
 				  success: function (infoRes) {
-				    console.log('用户昵称为：' , infoRes.userInfo);
+				    // console.log('用户昵称为：' , infoRes.userInfo);
 						if(infoRes.userInfo){
 							_t.userInfo = infoRes.userInfo
 							uni.switchTab({
