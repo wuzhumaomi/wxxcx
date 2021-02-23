@@ -18,7 +18,7 @@
 				<canvas canvas-id="shareCanvas" class="canvasName"></canvas>
 				<view class="canvasText">图片已保存到相册，可分享给好友</view>
 				<!-- <image :src="url01" class="errorImage" @click="canvasShow = false"></image> -->
-				<u-button  @click="canvasShow = false">保存图片</u-button>
+				<u-button  @click="canvasShow = false">完成</u-button>
 		</view>
 		
 </view>
