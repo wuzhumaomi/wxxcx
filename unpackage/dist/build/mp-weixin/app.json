@@ -4,7 +4,8 @@
     "pages/home-page/index",
     "pages/weather_page/weather_page",
     "pages/me-page/index",
-    "pages/shopping-cart-page/index"
+    "pages/shopping-cart-page/index",
+    "pages/main-page/main-page"
   ],
   "subPackages": [],
   "window": {
@@ -20,22 +21,10 @@
     "backgroundColor": "#ffffff",
     "list": [
       {
-        "pagePath": "pages/home-page/index",
+        "pagePath": "pages/main-page/main-page",
         "iconPath": "static/home-page/shouye.png",
         "selectedIconPath": "static/home-page/shouyefill.png",
         "text": "首页"
-      },
-      {
-        "pagePath": "pages/shopping-cart-page/index",
-        "iconPath": "static/shopping-cart-page/shopping-o.png",
-        "selectedIconPath": "static/shopping-cart-page/shopping.png",
-        "text": "购物车"
-      },
-      {
-        "pagePath": "pages/weather_page/weather_page",
-        "iconPath": "static/home-page/geren.png",
-        "selectedIconPath": "static/home-page/gerenfill.png",
-        "text": "天气"
       },
       {
         "pagePath": "pages/me-page/index",

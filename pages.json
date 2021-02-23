@@ -47,6 +47,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/canvas_page/canvas_page",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
