@@ -1,1 +1,1 @@
-<block wx:for="{{rightList}}" wx:for-item="item" wx:for-index="index" wx:key="index"><view class="pbl-view-item"><sp-com vue-id="{{'14efdc4f-6-'+index}}" item="{{item}}" bind:__l="__l"></sp-com></view></block>
+<block wx:for="{{rightList}}" wx:for-item="item" wx:for-index="index" wx:key="index"><view class="pbl-view-item"><sp-com vue-id="{{'14efdc4f-6-'+index}}" item="{{item}}" bind:__l="__l" vue-slots="{{['default']}}">{{index}}</sp-com></view></block>

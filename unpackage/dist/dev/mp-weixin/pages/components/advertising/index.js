@@ -83,7 +83,7 @@ try {
       return __webpack_require__.e(/*! import() | components/uni-list/uni-list */ "components/uni-list/uni-list").then(__webpack_require__.bind(null, /*! @/components/uni-list/uni-list.vue */ 82))
     },
     uniListChat: function() {
-      return __webpack_require__.e(/*! import() | components/uni-list-chat/uni-list-chat */ "components/uni-list-chat/uni-list-chat").then(__webpack_require__.bind(null, /*! @/components/uni-list-chat/uni-list-chat.vue */ 184))
+      return __webpack_require__.e(/*! import() | components/uni-list-chat/uni-list-chat */ "components/uni-list-chat/uni-list-chat").then(__webpack_require__.bind(null, /*! @/components/uni-list-chat/uni-list-chat.vue */ 191))
     }
   }
 } catch (e) {

@@ -80,13 +80,13 @@
 			<template v-slot:left="{leftList}">
 				<view class="pbl-view-item leftList" v-for="(item, index) in leftList" :key="index">
 					<!-- 这里编写您的内容，item为您传递给v-model的数组元素 -->
-					<spCom :item='item'></spCom>
+					<spCom :item='item'>{{index}}</spCom>
 				</view>
 			</template>
 			<template v-slot:right="{rightList}">
 				<view class="pbl-view-item" v-for="(item, index) in rightList" :key="index">
 					<!-- 这里编写您的内容，item为您传递给v-model的数组元素 -->
-					<spCom :item='item'></spCom>
+					<spCom :item='item'>{{index}}</spCom>
 				</view>
 			</template>
 		</u-waterfall>

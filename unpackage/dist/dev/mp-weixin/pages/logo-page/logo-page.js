@@ -189,7 +189,7 @@ var _default =
           if (infoRes.userInfo) {
             _t.userInfo = infoRes.userInfo;
             uni.switchTab({
-              url: '/pages/home-page/index' });
+              url: '/pages/main-page/main-page' });
 
           } else {
             console.log('用户尚未登录');

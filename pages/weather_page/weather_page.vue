@@ -2,10 +2,11 @@
 	<view>
 		
 	<u-button type="primary" @click='show = true'>更换城市</u-button>
+	<button open-type="share">分享给好友</button>
 	<u-picker mode="region" v-model="show" @confirm='onConfirm' :area-code='areaCode'></u-picker>
 	城市：{{tianQiInfo.provinceName + ' - ' + tianQiInfo.city}}<br>
 	天气情况：{{tianQiInfo.realtime.weather}}<br>
-	体感温度：{{tianQiInfo.realtime.temp}}<br>
+	体感温度：{{tianQiInfo.realtime.temp}}℃<br>
 	PM 2.5：{{tianQiInfo.pm25.pm25}}<br>
 	空气质量：{{tianQiInfo.pm25.quality}}<br>
 	空气质量指数超越全国{{tianQiInfo.pm25.cityrank}}%城市<br>
@@ -1443,6 +1444,20 @@
 		},
 		created() {
 			this.onListWeather(this.cs)
+		},
+				
+		onShareAppMessage(res) { //发送给朋友
+				return {
+						title: this.tianQiInfo.provinceName + ' - ' + this.tianQiInfo.city + ' 今日天气情况：' + this.tianQiInfo.realtime.weather + ' 体感温度：'+ this.tianQiInfo.realtime.temp + '℃',
+						imageUrl: 'http://bpic.588ku.com/element_pic/00/00/07/125784bea22c680.jpg',
+				}
+		},
+		
+		onShareTimeline(res) {//分享到朋友圈
+				return {
+						title: this.tianQiInfo.provinceName + ' - ' + this.tianQiInfo.city + ' 今日天气情况：' + this.tianQiInfo.realtime.weather + ' 体感温度：'+ this.tianQiInfo.realtime.temp + '℃',
+						imageUrl: 'http://bpic.588ku.com/element_pic/00/00/07/125784bea22c680.jpg',
+				}
 		},
 		
 		methods:{

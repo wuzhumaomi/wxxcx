@@ -191,6 +191,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 var _default =
 {
   data: function data() {
@@ -1609,6 +1610,20 @@ var _default =
   },
   created: function created() {
     this.onListWeather(this.cs);
+  },
+
+  onShareAppMessage: function onShareAppMessage(res) {//发送给朋友
+    return {
+      title: this.tianQiInfo.provinceName + ' - ' + this.tianQiInfo.city + ' 今日天气情况：' + this.tianQiInfo.realtime.weather + ' 体感温度：' + this.tianQiInfo.realtime.temp + '℃',
+      imageUrl: 'http://bpic.588ku.com/element_pic/00/00/07/125784bea22c680.jpg' };
+
+  },
+
+  onShareTimeline: function onShareTimeline(res) {//分享到朋友圈
+    return {
+      title: this.tianQiInfo.provinceName + ' - ' + this.tianQiInfo.city + ' 今日天气情况：' + this.tianQiInfo.realtime.weather + ' 体感温度：' + this.tianQiInfo.realtime.temp + '℃',
+      imageUrl: 'http://bpic.588ku.com/element_pic/00/00/07/125784bea22c680.jpg' };
+
   },
 
   methods: {
