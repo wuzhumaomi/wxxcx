@@ -1462,6 +1462,7 @@
 		
 		methods:{
 			onListWeather(cityIds){
+				let _t = this
 				uni.request({
 						url: 'http://aider.meizu.com/app/weather/listWeather?cityIds='+cityIds, //仅为示例，并非真实接口地址。
 						data: {
@@ -1473,8 +1474,9 @@
 						},
 						success: (res) => {
 								console.log(res.data.value[0]);
-								this.tianQiInfo = res.data.value[0]
-								console.log(' 消息 ',this.tianQiInfo);
+								_t.tianQiInfo = res.data.value[0]
+								
+								console.log(' 消息 ',_t.tianQiInfo);
 						}
 				});
 			},

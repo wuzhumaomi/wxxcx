@@ -9,6 +9,7 @@
 			功能测试页面
 		</view>
 		<u-button @click="onNavigateTo('/pages/weather_page/weather_page')" class="UBtn" type="primary">天气</u-button>
+		<u-button @click="onNavigateTo('/pages/logo-page/logo-page')" class="UBtn" type="primary">登录页面</u-button>
 		<u-button @click="onNavigateTo('/pages/canvas_page/canvas_page')" class="UBtn" type="primary">生成图片</u-button>
 		<u-button @click="onNavigateTo('/pages/map-page/map-page')" class="UBtn" type="primary">地图操作</u-button>
 	</view>

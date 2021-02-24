@@ -2,7 +2,8 @@
 	<!-- calss='pbl-view-item' -->
 	<view >
 		<view class="pbl-top">
-			<u-image :src="item.src" :fade="true" duration="450"></u-image>
+			<!-- <u-image class="Uimg" :src="item.src" :fade="true" duration="450"></u-image> -->
+			<image :src="item.src"></image>
 		</view>
 		
 		<view class="pbl-text">
@@ -66,6 +67,11 @@
 		// background-color: #4CD964;
 		position: absolute;
 		height: 70%;
+		.Uimg{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+		}
 		image{
 			position: absolute;
 			width: 100%;

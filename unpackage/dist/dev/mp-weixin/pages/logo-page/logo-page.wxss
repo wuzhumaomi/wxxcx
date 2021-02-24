@@ -33,9 +33,14 @@
   margin-top: 20rpx;
   margin-bottom: 20rpx;
 }
+.logo .hui {
+  color: #606266;
+}
 .logo .touXiang {
   width: 300rpx;
   height: 300rpx;
+  border-radius: 50%;
+  overflow: hidden;
   margin: 0 auto;
 }
 .logo .bottom {
@@ -51,5 +56,10 @@
 }
 .logo .lv {
   color: #00ff00;
+}
+.logo .userImg {
+  width: 100rpx;
+  border-radius: 50%;
+  overflow: hidden;
 }
 

@@ -4,21 +4,25 @@
 			<image src='https://api.weixin.qq.com/cgi-bin/wxaapp/createwxaqrcode?access_token=42_kgSShv1lHpJql5VcZhL3Po5GGvAj2Izsc2uv1KI49giUuYxsuwHSE5Cv2349LyJQTgWgxjakJcgB8On7py9nGRlT21gCH9vFdHXDUPuKYke5lxcsgObzYhkhqM1NaIm1kRJ05yTih6Qo9q32IBSjAJAUNE' ></image>
 		</view> -->
 		
-    <view class="personal_li" @click="shareClick">
+    <view class="personal_li" >
 			<image :src="url01"
 						 mode="widthFix"
 						 class="iconImage"></image>
-			<text class="font14">分享生成图片</text>
 			<image :src="url02"
 						 mode="widthFix"
 						 class="jtIcon"></image>
+			
+			<u-button v-if="!canvasShow" @click="shareClick" class="UBtn" type="primary">将上述图片生成图片并保存</u-button>
+			
+			
     </view>
 		
 		<view class="canvasContent" v-if="canvasShow">
 				<canvas canvas-id="shareCanvas" class="canvasName"></canvas>
-				<view class="canvasText">图片已保存到相册，可分享给好友</view>
+				<view class="canvasText">{{canvasText}}</view>
 				<!-- <image :src="url01" class="errorImage" @click="canvasShow = false"></image> -->
-				<u-button  @click="canvasShow = false">完成</u-button>
+				<u-button v-if="!ifShouQuan"  @click="toMain">完成</u-button>
+				<u-button v-if="ifShouQuan" @click="shouQuan()" class="UBtn" type="primary">保存到相册权限授权</u-button>
 		</view>
 		
 </view>
@@ -28,7 +32,9 @@
 export default {
   data() {
     return {
+			canvasText:'',
 			canvasShow: false,
+			ifShouQuan: false,
 			url01:'https://img-pre.ivsky.com/img/tupian/pre/201911/10/wu_shanlin.jpg',
 			url02:'https://qr.api.cli.im/newqr/create?data=%E4%BD%A0%E5%A5%BD&level=H&transparent=0&bgcolor=%23ffffff&forecolor=%2368B56B&blockpixel=12&marginblock=2&logourl=null&size=400&logoshape=no&embed_text_fontfamily=simhei.ttc&foretype=2&gradient_way=slash&forecolor2=%2321938E&eye_use_fore=1&qrcode_eyes=pin-4.png&outcolor=%239A3131&incolor=%237D4646&body_type=25&water_ratio=1&qr_rotate=0&text=&fontfamily=simhei.ttc&logo_pos=0&kid=bizcliim&time=1614067216&key=d88a90a83a4e30c3770b9c7b4d45b876',
 			src2:'',
@@ -79,6 +85,9 @@ export default {
 		
 	},
   methods: {
+				toMain(){
+					wx.switchTab({url:'/pages/main-page/main-page'})
+				},
 				
         //这是一个封装好的方法 
         promisify: api => {
@@ -93,15 +102,16 @@ export default {
             }
         },
 				
-        shareClick() {         
+        shareClick() {  
+						let _t = this
             const wxGetImageInfo = this.promisify(uni.getImageInfo)
             Promise.all([
                     // 图片目前只随机找了几张图片，后期可自行替换
                     wxGetImageInfo({
-                            src: this.url01   // 背景图片
+                            src: _t.url01   // 背景图片
                     }),
                     wxGetImageInfo({
-                            src: this.url02   // 二维码图片，二维码图片如需要携带参数，可根据接口将需要扫码进入页面的路径+参数传入后端，后端可根据生产小程序二维码路径，将路径放入这里就ok了,<a href="https://www.jianshu.com/p/5f96a4f91b9c" target="_blank">可参考</a>
+                            src: _t.url02   // 二维码图片，二维码图片如需要携带参数，可根据接口将需要扫码进入页面的路径+参数传入后端，后端可根据生产小程序二维码路径，将路径放入这里就ok了,<a href="https://www.jianshu.com/p/5f96a4f91b9c" target="_blank">可参考</a>
                     })
             ]).then(res => {
                     // console.log(3454)
@@ -116,7 +126,7 @@ export default {
 										// ctx.strokeStyle = 'green';
                     ctx.fillText('生活不止眼前的苟且,', 300 - 10, 50)
                     ctx.fillText('还有诗和远方.', 300 - 10, 100)
-										ctx.fillText('--- ' + this.nickName, 300 - 10, 150)
+										ctx.fillText('--- ' + _t.nickName, 300 - 10, 150)
                     // 小程序码
                     const qrImgSize = 150
                     ctx.drawImage(res[1].path, 30, 280, qrImgSize, qrImgSize)
@@ -124,41 +134,74 @@ export default {
                     // 绘图生成临时图片
                     console.log('res', res)
                     ctx.draw(false,() => {
-                        this.tempFileImage()
+                        _t.tempFileImage()
                     })
-                    this.canvasShow = true
+                    _t.canvasShow = true
             })
         },
 				
         tempFileImage() {
             let that = this
             uni.canvasToTempFilePath({
-                    canvasId: 'shareCanvas',
-                    success: (res) => {
-                            uni.hideLoading()
-                            that.savePic(res.tempFilePath)
-                    },
-                    fail:function () {
-                            //TODO
-                    }
+							canvasId: 'shareCanvas',
+							success: (res) => {
+											uni.hideLoading()
+											that.savePic(res.tempFilePath)
+							},
+							fail:function () {
+											//TODO
+							}
             })
         },
-				
+				shouQuan(){								
+						let _t = this
+						wx.openSetting({
+							success(settingdata) {
+								if (settingdata.authSetting['scope.writePhotosAlbum']) {
+									console.log('获取权限成功，给出再次点击图片保存到相册的提示。')
+									_t.tempFileImage()
+									_t.ifShouQuan = false
+								}else {
+									console.log('获取权限失败，给出不给权限就无法正常使用的提示')
+								}
+							},
+							fail: function (e) {
+								//TODO
+								console.log(e.errMsg)
+							},
+						}) 	
+				},
         //保存
         savePic (filePath) {
+						let _t = this
             console.log('filePath', filePath)
             uni.showLoading({
                     title: '正在保存'
             });
+						_t.canvasText = '正在保存....'
+						
             uni.saveImageToPhotosAlbum({
                     filePath: filePath,
                     success: function () {
+											
+											_t.canvasText = '图片已保存到相册，可分享给好友'
+											
 											uni.showToast({
 												title: '图片保存成功～'
 											});
                     },
                     fail: function (e) {
-                            //TODO
+											//TODO
+											if (e.errMsg == 'saveImageToPhotosAlbum:fail cancel'){
+												_t.canvasText = '取消保存'
+											}
+											
+											if (e.errMsg == 'saveImageToPhotosAlbum:fail auth deny'){
+												_t.canvasText = '需要保存到相册的权限，请点击下面按钮进行授权'
+												_t.ifShouQuan = true
+											}
+											
+											console.log('失败情况：',e.errMsg)
                     },
                     complete: function (){
 											uni.hideLoading()

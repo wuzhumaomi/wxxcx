@@ -6,19 +6,19 @@
 				 <swiper-item>
 						 <view class="swiper-item uni-bg-red">
 							 <image src="../../../static/home-page/magnifier.png" class="iocn-img2" mode=""></image>
-							 动感单车
+							 西方寓言的始祖/伊索寓言
 						 </view>
 				 </swiper-item>
 				 <swiper-item>
 						 <view class="swiper-item uni-bg-green">
 							 <image src="../../../static/home-page/magnifier.png" class="iocn-img2" mode=""></image>
-							 华硕 国际
+							 中国道家学说的开山之作/老子
 						 </view>
 				 </swiper-item>
 				 <swiper-item>
 						 <view class="swiper-item uni-bg-blue">
 							 <image src="../../../static/home-page/magnifier.png" class="iocn-img2" mode=""></image>
-							 旧书籍
+							 中国先秦时期的百科全书/诗经
 						 </view>
 				 </swiper-item>
 		 </swiper>
