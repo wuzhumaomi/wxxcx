@@ -96,13 +96,13 @@ var components
 try {
   components = {
     uniList: function() {
-      return __webpack_require__.e(/*! import() | components/uni-list/uni-list */ "components/uni-list/uni-list").then(__webpack_require__.bind(null, /*! @/components/uni-list/uni-list.vue */ 98))
+      return __webpack_require__.e(/*! import() | components/uni-list/uni-list */ "components/uni-list/uni-list").then(__webpack_require__.bind(null, /*! @/components/uni-list/uni-list.vue */ 106))
     },
     uniListItem: function() {
-      return __webpack_require__.e(/*! import() | components/uni-list-item/uni-list-item */ "components/uni-list-item/uni-list-item").then(__webpack_require__.bind(null, /*! @/components/uni-list-item/uni-list-item.vue */ 105))
+      return __webpack_require__.e(/*! import() | components/uni-list-item/uni-list-item */ "components/uni-list-item/uni-list-item").then(__webpack_require__.bind(null, /*! @/components/uni-list-item/uni-list-item.vue */ 113))
     },
     uWaterfall: function() {
-      return Promise.all(/*! import() | node-modules/uview-ui/components/u-waterfall/u-waterfall */[__webpack_require__.e("common/vendor"), __webpack_require__.e("node-modules/uview-ui/components/u-waterfall/u-waterfall")]).then(__webpack_require__.bind(null, /*! uview-ui/components/u-waterfall/u-waterfall.vue */ 112))
+      return Promise.all(/*! import() | node-modules/uview-ui/components/u-waterfall/u-waterfall */[__webpack_require__.e("common/vendor"), __webpack_require__.e("node-modules/uview-ui/components/u-waterfall/u-waterfall")]).then(__webpack_require__.bind(null, /*! uview-ui/components/u-waterfall/u-waterfall.vue */ 120))
     }
   }
 } catch (e) {
@@ -159,7 +159,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function _toConsumableArray(arr) {return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();}function _nonIterableSpread() {throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(o);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _iterableToArray(iter) {if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);}function _arrayWithoutHoles(arr) {if (Array.isArray(arr)) return _arrayLikeToArray(arr);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;}var CompInput = function CompInput() {__webpack_require__.e(/*! require.ensure | pages/components/comp-input/index */ "pages/components/comp-input/index").then((function () {return resolve(__webpack_require__(/*! @/pages/components/comp-input/index.vue */ 119));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var spCom = function spCom() {__webpack_require__.e(/*! require.ensure | pages/components/sp-com/index */ "pages/components/sp-com/index").then((function () {return resolve(__webpack_require__(/*! @/pages/components/sp-com/index.vue */ 126));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function _toConsumableArray(arr) {return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();}function _nonIterableSpread() {throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(o);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _iterableToArray(iter) {if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);}function _arrayWithoutHoles(arr) {if (Array.isArray(arr)) return _arrayLikeToArray(arr);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;}var CompInput = function CompInput() {__webpack_require__.e(/*! require.ensure | pages/components/comp-input/index */ "pages/components/comp-input/index").then((function () {return resolve(__webpack_require__(/*! @/pages/components/comp-input/index.vue */ 127));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var spCom = function spCom() {__webpack_require__.e(/*! require.ensure | pages/components/sp-com/index */ "pages/components/sp-com/index").then((function () {return resolve(__webpack_require__(/*! @/pages/components/sp-com/index.vue */ 134));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -316,17 +316,17 @@ __webpack_require__.r(__webpack_exports__);
         scrollTop: 0 },
 
       listTypecont: [
-      { name: "限时打折30%" },
-      { name: "小米9" },
-      { name: "苹果6" },
-      { name: "苹果8" },
-      { name: "小米8" },
-      { name: "摩托车" },
-      { name: "苹果x" },
-      { name: "苹果11" },
-      { name: "苹果" },
-      { name: "洗衣机" },
-      { name: "冰箱" }],
+      { name: "周易" },
+      { name: "荷马史诗" },
+      { name: "伊索寓言" },
+      { name: "老子" },
+      { name: "诗经" },
+      { name: "孙子兵法" },
+      { name: "论语" },
+      { name: "左传" },
+      { name: "大学" },
+      { name: "希腊波斯战争史" },
+      { name: "中庸" }],
 
 
       // <image v-if="index%4==0" src="/static/shopping-cart-page/wu04.jpg" mode=""></image>
@@ -335,12 +335,14 @@ __webpack_require__.r(__webpack_exports__);
       // <image v-else-if="index%2==0" src="../../static/shopping-cart-page/wu02.jpg" mode=""></image>
       // <image v-else src="../../static/shopping-cart-page/wu01.jpg" mode=""></image>
       listTypecont2: [
-      { name: "安徽销量过百 五年老店新年花束", src: 'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1247644627,2742962773&fm=15&gp=0.jpg' },
-      { name: "[立减300元+顺丰包邮 中国移动国旗]苹果12", src: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2052753110,724684217&fm=11&gp=0.jpg' },
-      { name: "情侣礼物正品ck对戒", src: 'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2277377935,230871943&fm=26&gp=0.jpg' },
-      { name: "本命年礼物和田玉朱砂手链", src: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1992208937,1326357604&fm=26&gp=0.jpg' },
-      { name: "天然翡翠戒指男士帝王绿", src: 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3374683313,684776267&fm=26&gp=0.jpg' }],
-
+      { name: "推天道以明人事之书 周易", src: 'https://pic.baike.soso.com/ugc/baikepic2/24327/cut-20190920143453-1705591585_jpg_406_507_43400.jpg/300' },
+      { name: "[高华宏阔的史诗典范] 荷马史诗", src: 'https://pic.baike.soso.com/ugc/baikepic2/19845/cut-20191127180426-971796184_jpg_549_439_58908.jpg/300' },
+      { name: "西方寓言的始祖/伊索寓言", src: 'https://pic.baike.soso.com/ugc/baikepic2/9465/cut-20200320112541-1981854784_jpg_1200_1500_109606.jpg/300' },
+      { name: "中国道家学说的开山之作/老子", src: 'https://img02.sogoucdn.com/v2/thumb/retype/ext/jpg?appid=10160007&url=http%3A%2F%2Fimg11.360buyimg.com%2Fn1%2Fjfs%2Ft1963%2F217%2F1450062926%2F523600%2Fde3d6a0b%2F56a72b10N02f9c40e.jpg' },
+      { name: "中国先秦时期的百科全书/诗经", src: 'https://pic.baike.soso.com/ugc/baikepic2/17286/cut-20200218170101-1263845356_jpg_301_377_10745.jpg/300' },
+      { name: "兵家韬略之首/孙子兵法", src: 'https://pic.baike.soso.com/ugc/baikepic2/5592/cov-20191112213318-1657565321_jpg_800_800_99992.jpg/300' }
+      // 
+      ],
       // 轮播图
       background: ['color1', 'color2', 'color3'],
       indicatorDots: true,

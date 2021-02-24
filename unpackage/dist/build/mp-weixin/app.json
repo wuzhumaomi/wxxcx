@@ -5,7 +5,9 @@
     "pages/weather_page/weather_page",
     "pages/me-page/index",
     "pages/shopping-cart-page/index",
-    "pages/main-page/main-page"
+    "pages/main-page/main-page",
+    "pages/canvas_page/canvas_page",
+    "pages/map-page/map-page"
   ],
   "subPackages": [],
   "window": {

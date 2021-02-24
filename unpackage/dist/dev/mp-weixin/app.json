@@ -6,7 +6,8 @@
     "pages/me-page/index",
     "pages/shopping-cart-page/index",
     "pages/main-page/main-page",
-    "pages/canvas_page/canvas_page"
+    "pages/canvas_page/canvas_page",
+    "pages/map-page/map-page"
   ],
   "subPackages": [],
   "window": {
@@ -35,6 +36,5 @@
       }
     ]
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap37.json"
+  "usingComponents": {}
 }

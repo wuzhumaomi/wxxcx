@@ -2,20 +2,20 @@
 	<!-- calss='pbl-view-item' -->
 	<view >
 		<view class="pbl-top">
-			<image :src="item.src" mode=""></image>
+			<u-image :src="item.src" :fade="true" duration="450"></u-image>
 		</view>
 		
 		<view class="pbl-text">
 			{{item.name }}
 			<view class="pbl-text-bot">
 				<view class="text01">
-					{{Math.ceil(Math.random() * 1000) }}
+					{{Math.ceil(Math.random() * 1000) }}人气
 				</view>
 				<view class="text02">
-					卷后价 
+					推荐人数 
 				</view>
 				<view class="text03">
-					{{Math.ceil(Math.random() * 99) }}人付款
+					{{Math.ceil(Math.random() * 99) }}
 				</view>
 			</view>
 		</view>

@@ -98,7 +98,7 @@ var components
 try {
   components = {
     uEmpty: function() {
-      return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-empty/u-empty */ "node-modules/uview-ui/components/u-empty/u-empty").then(__webpack_require__.bind(null, /*! uview-ui/components/u-empty/u-empty.vue */ 178))
+      return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-empty/u-empty */ "node-modules/uview-ui/components/u-empty/u-empty").then(__webpack_require__.bind(null, /*! uview-ui/components/u-empty/u-empty.vue */ 186))
     }
   }
 } catch (e) {
@@ -183,21 +183,21 @@ var _default =
     return {
       options: [{
         icon: 'headphones',
-        text: '客服' },
+        text: '作者' },
       {
         icon: 'shop',
-        text: '店铺',
+        text: '沟通群',
         info: 2
         // 标记的颜色
         // infoBackgroundColor:'#007aff',
         // infoColor:"red"
       }, {
         icon: 'cart',
-        text: '购物车',
+        text: '收藏栏',
         info: 2 }],
 
       buttonGroup: [{
-        text: '去结算（0）',
+        text: '去添加（0）',
         backgroundColor: '#ff0000',
         color: '#fff' }] };
 

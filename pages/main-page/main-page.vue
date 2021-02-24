@@ -3,13 +3,14 @@
 		<view class="text_view">
 			样式浏览页面
 		</view>
-		<u-button @click="onNavigateTo('/pages/home-page/index')" class="UBtn" type="primary">商城首页页面</u-button>
-		<u-button @click="onNavigateTo('/pages/shopping-cart-page/index')" class="UBtn" type="primary">购物车页面</u-button>
+		<u-button @click="onNavigateTo('/pages/home-page/index')" class="UBtn" type="primary">圈友推书页面</u-button>
+		<u-button @click="onNavigateTo('/pages/shopping-cart-page/index')" class="UBtn" type="primary">收藏栏页面</u-button>
 		<view class="text_view">
 			功能测试页面
 		</view>
 		<u-button @click="onNavigateTo('/pages/weather_page/weather_page')" class="UBtn" type="primary">天气</u-button>
 		<u-button @click="onNavigateTo('/pages/canvas_page/canvas_page')" class="UBtn" type="primary">生成图片</u-button>
+		<u-button @click="onNavigateTo('/pages/map-page/map-page')" class="UBtn" type="primary">地图操作</u-button>
 	</view>
 </template>
 

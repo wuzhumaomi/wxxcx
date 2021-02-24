@@ -2,16 +2,16 @@
 	<view class="view shopping-cart-page">
 		<view class="image-view">
 			<!-- <image  src="../../static/shopping-cart-page/wu.png" mode=""></image> -->
-			<u-empty class='img' text="暂无符合条件的商品" mode="car"></u-empty>
+			<u-empty class='img' text="无历史记录" mode="history"></u-empty>
 		</view>
 		
 		<!-- 购物条 -->
 		<view class="btn-view">
 			<view class="left-view">
-				<checkbox value="cb" />全选 合计：￥0.00
+				<checkbox value="cb" />全选
 			</view>
 			<view class="right-view">
-				<button class="right-btn" type="warn" @click="goto('../home-page/index')">去结算</button>
+				<button class="right-btn" type="warn" @click="goto('../home-page/index')">去添加</button>
 			</view>
 		</view>
 	</view>
@@ -26,21 +26,21 @@
       return {
         options: [{
             icon: 'headphones',
-            text: '客服'
+            text: '作者'
         }, {
             icon: 'shop',
-            text: '店铺',
+            text: '沟通群',
             info: 2,
 						// 标记的颜色
             // infoBackgroundColor:'#007aff',
             // infoColor:"red"
         }, {
             icon: 'cart',
-            text: '购物车',
+            text: '收藏栏',
             info: 2
         }],
         buttonGroup: [{
-          text: '去结算（0）',
+          text: '去添加（0）',
           backgroundColor: '#ff0000',
           color: '#fff'
         }]
