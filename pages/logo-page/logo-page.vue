@@ -40,6 +40,9 @@
 			wx.getUserInfo({
 				lang:'zh_CN',
 				success: res => {
+					this.$store.commit('setUserInfo', res.userInfo);
+					
+					this.$store.state.userInfo
 					// console.log(res.userInfo);
 				}
 			})
@@ -59,6 +62,8 @@
 				    // console.log('用户昵称为：' , infoRes.userInfo);
 						if(infoRes.userInfo){
 							_t.userInfo = infoRes.userInfo
+							
+							_t.$store.commit('setHasLogin', true);
 							// uni.switchTab({
 							//     url: '/pages/main-page/main-page'
 							// });

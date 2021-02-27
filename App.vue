@@ -3,9 +3,15 @@
 	export default {
 		onLaunch: function() {
 			console.log('App Launch')
+			this.$db.getApi({
+				name:'sunsun'
+			}).then(function(res){
+				console.log(res.data);
+			})
 		},
 		onShow: function() {
 			console.log('App Show')
+			// const db = wx.cloud.database()
 		},
 		onHide: function() {
 			console.log('App Hide')
