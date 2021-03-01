@@ -10217,7 +10217,6 @@ function getApi(obj) {
     }).catch(function (err) {
       reject(err);
     });
-
   });
 }var _default =
 

@@ -43,7 +43,6 @@ function getApi(obj){
 			}).catch(err => {
 				reject(err)
 			})
-			
 	}))
 }			
 
