@@ -9,7 +9,13 @@
 		</view>
 		
 		<view class="">
-			生日：1999/4/27
+			生日： <text >{{date}}</text>
+			<u-calendar v-model="show" :mode="mode"></u-calendar>
+		</view>
+		
+		<view class="">
+			告白日期： <text @click="show = true">{{date2}}</text>
+			<u-calendar v-model="show" :mode="mode" @change="change"></u-calendar>
 		</view>
 		<view class="">
 			星座：金牛座
@@ -154,6 +160,12 @@
 		},
 		data() {
 			return {
+				
+				show: false,
+				mode: 'date',
+				date: '1999/4/27',
+				date2: '2020/01/26',
+				
 				miao: 0,
 				fen: 0,
 				shi: 0,
@@ -190,11 +202,15 @@
 			},1000)
 		},
 		methods: {
+			change(e) {
+				this.date2 = e.result
+				console.log(e);
+			},
 			updateFile() {
 
 			},
 			getTime(){
-				let time = new Date() - new Date('2020/01/26')
+				let time = new Date() - new Date(this.date2)
 				this.miao = time / 1000
 				this.fen = time / 1000 / 60
 				this.shi = time / 1000 / 60 / 60
@@ -210,7 +226,7 @@
 				}else{
 					nian = new Date().getFullYear() + 1
 				}
-				// let time = new Date() - new Date('2020/01/26')
+				// let time = new Date() - new Date(this.date2)
 				// console.log(nian+'/'+yue+'/'+tian)
 				let time2 = new Date(nian+'/'+yue+'/'+tian) - new Date()
 				

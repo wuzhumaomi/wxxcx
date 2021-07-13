@@ -238,16 +238,16 @@ var components
 try {
   components = {
     uField: function() {
-      return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-field/u-field */ "node-modules/uview-ui/components/u-field/u-field").then(__webpack_require__.bind(null, /*! uview-ui/components/u-field/u-field.vue */ 250))
+      return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-field/u-field */ "node-modules/uview-ui/components/u-field/u-field").then(__webpack_require__.bind(null, /*! uview-ui/components/u-field/u-field.vue */ 257))
     },
     uButton: function() {
-      return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-button/u-button */ "node-modules/uview-ui/components/u-button/u-button").then(__webpack_require__.bind(null, /*! uview-ui/components/u-button/u-button.vue */ 183))
+      return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-button/u-button */ "node-modules/uview-ui/components/u-button/u-button").then(__webpack_require__.bind(null, /*! uview-ui/components/u-button/u-button.vue */ 190))
     },
     uDivider: function() {
-      return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-divider/u-divider */ "node-modules/uview-ui/components/u-divider/u-divider").then(__webpack_require__.bind(null, /*! uview-ui/components/u-divider/u-divider.vue */ 243))
+      return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-divider/u-divider */ "node-modules/uview-ui/components/u-divider/u-divider").then(__webpack_require__.bind(null, /*! uview-ui/components/u-divider/u-divider.vue */ 250))
     },
     uLine: function() {
-      return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-line/u-line */ "node-modules/uview-ui/components/u-line/u-line").then(__webpack_require__.bind(null, /*! uview-ui/components/u-line/u-line.vue */ 257))
+      return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-line/u-line */ "node-modules/uview-ui/components/u-line/u-line").then(__webpack_require__.bind(null, /*! uview-ui/components/u-line/u-line.vue */ 264))
     }
   }
 } catch (e) {
