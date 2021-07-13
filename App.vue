@@ -1,13 +1,23 @@
 <script>
-	
+	import api from '@/api/index.js'
 	export default {
 		onLaunch: function() {
 			console.log('App Launch')
-			this.$db.getApi({
-				name:'sunsun'
-			}).then(function(res){
-				console.log(res.data);
-			})
+			// this.$db.user.getApi({
+			// 	name:'sunsun'
+			// }).then(function(res){
+			// 	console.log(res.data);
+			// })
+			
+			// 历史上的今天
+			// this.history('1/3')
+			// 周公解梦
+			// this.dream('大便')
+			// 老黄历
+			// this.laohuangli(new Date())
+			// 笑话
+			// this.jokeRandJoke()
+
 		},
 		onShow: function() {
 			console.log('App Show')
@@ -15,6 +25,86 @@
 		},
 		onHide: function() {
 			console.log('App Hide')
+		},
+		methods:{
+			history(date){
+				let _t = this
+				api.request.todayOnhistory(date)
+				.then(res => {
+					console.log('历史上的今天', res?.data);
+					if(res?.data){
+						for (let time of res.data) {
+							console.log( time.date,time.title);
+						}
+					}else{
+						setTimeout(function() {
+							_t.history(date)
+						}, 1000);
+					}
+				}).catch(e => {
+					console.log(e);
+				})
+			},
+			
+			dream(data){
+				let _t = this
+				api.request.dreamQuery(data)
+				.then(res => {
+					
+					console.log('周公解梦 --- ', res?.data);
+					if(res?.data){
+						for (let time of res.data) {
+							console.log(time.title,time.des);
+						}
+					}else{
+						setTimeout(function() {
+							_t.dream(data)
+						}, 1000);
+					}
+				}).catch(e => {
+					console.log(e);
+				})
+			},
+			
+			laohuangli(data){
+				let _t = this
+				api.request.laohuangliD(data)
+				.then(res => {
+					console.log('老黄历', res?.data);
+					if(res?.data){
+						for (let time of res.data) {
+							console.log('老黄历 --- ',time);
+						}
+					}else{
+						setTimeout(function() {
+							_t.dream(data)
+						}, 1000);
+					}
+				}).catch(e => {
+					console.log(e);
+				})
+			},
+			
+			jokeRandJoke(data){
+				let _t = this
+				api.request.jokeRandJoke(data)
+				.then(res => {
+					console.log('笑话', res?.data);
+					if(res?.data ){
+						for (let time of res.data) {
+							console.log('笑话本地 --- ',time.title);
+						}
+					}else{
+						setTimeout(function() {
+							_t.dream(data)
+						}, 1000);
+					}
+				}).catch(e => {
+					console.log(e);
+				})
+			},
+			
+			
 		}
 	}
 </script>

@@ -1,27 +1,26 @@
 <template>
 	<view>
-		
-	<u-button type="primary" @click='show = true'>更换城市</u-button>
-	<button open-type="share">分享给好友</button>
+<!-- 	<u-button type="primary" @click='show = true'>更换城市</u-button>
+	<button open-type="share">分享给好友</button> -->
+	<text class="text-class01">天气情况</text>
 	<u-picker mode="region" v-model="show" @confirm='onConfirm' :area-code='areaCode'></u-picker>
-	城市：{{tianQiInfo.provinceName + ' - ' + tianQiInfo.city}}<br>
+	所属城市：{{tianQiInfo.provinceName + ' - ' + tianQiInfo.city}}<br>
 	天气情况：{{tianQiInfo.realtime.weather}}<br>
 	体感温度：{{tianQiInfo.realtime.temp}}℃<br>
 	PM 2.5：{{tianQiInfo.pm25.pm25}}<br>
 	空气质量：{{tianQiInfo.pm25.quality}}<br>
 	空气质量指数超越全国{{tianQiInfo.pm25.cityrank}}%城市<br>
 	<text class="text-class01">未来几天天气</text>
-	<view v-for="(item,index) in tianQiInfo.weathers" :key="index">
-		<u-divider color="#fa3534">{{item.week}}</u-divider>
+	<view v-for="(item,index) in weathersList" :key="index">
+		<u-divider  bg-color='#eadac0' border-color='#606266' color="#606266">{{index==0?'今天':(index==1?'明天':item.week)}}</u-divider>
 		</br>
 		日落时间:{{item.sun_down_time}}<br>
 		日出时间:{{item.sun_rise_time}}<br>
 		白天气温:{{item.temp_day_c}}<br>
 		夜间气温:{{item.temp_night_c}}<br>
-		风向:{{item.wd}}<br>
+		<!-- 风向:{{item.wd}}<br> -->
 		天气情况:{{item.weather}}<br>
-		风力:{{item.ws}}<br>
-		
+		<!-- 风力:{{item.ws}}<br> -->
 	</view>
 	</view>
 </template>
@@ -31,6 +30,7 @@
 		data() {
 			return {
 				tianQiInfo:'',
+				weathersList:[],
 				// 默认合肥
 				cs:'101220101',
 				areaCode:["34", "3401", "340104"],
@@ -1442,29 +1442,23 @@
 
 			};
 		},
-		created() {
+		onLoad() {
+			console.log('天气api调用');
 			this.onListWeather(this.cs)
 		},
-				
-		onShareAppMessage(res) { //发送给朋友
-				return {
-						title: this.tianQiInfo.provinceName + ' - ' + this.tianQiInfo.city + ' 今日天气情况：' + this.tianQiInfo.realtime.weather + ' 体感温度：'+ this.tianQiInfo.realtime.temp + '℃',
-						imageUrl: 'http://bpic.588ku.com/element_pic/00/00/07/125784bea22c680.jpg',
-				}
+		onShow() {
 		},
-		
-		onShareTimeline(res) {//分享到朋友圈
-				return {
-						title: this.tianQiInfo.provinceName + ' - ' + this.tianQiInfo.city + ' 今日天气情况：' + this.tianQiInfo.realtime.weather + ' 体感温度：'+ this.tianQiInfo.realtime.temp + '℃',
-						imageUrl: 'http://bpic.588ku.com/element_pic/00/00/07/125784bea22c680.jpg',
-				}
+		created() {
+			console.log('天气api调用');
+			this.onListWeather(this.cs)
 		},
+			
 		
 		methods:{
 			onListWeather(cityIds){
 				let _t = this
 				uni.request({
-						url: 'http://aider.meizu.com/app/weather/listWeather?cityIds='+cityIds, //仅为示例，并非真实接口地址。
+						url: 'https://aider.meizu.com/app/weather/listWeather?cityIds='+cityIds, //仅为示例，并非真实接口地址。
 						data: {
 								text: 'uni.request'
 						},
@@ -1475,7 +1469,7 @@
 						success: (res) => {
 								console.log(res.data.value[0]);
 								_t.tianQiInfo = res.data.value[0]
-								
+								_t.weathersList = res.data.value[0].weathers
 								console.log(' 消息 ',_t.tianQiInfo);
 						}
 				});

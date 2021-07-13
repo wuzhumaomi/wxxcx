@@ -1,10 +1,13 @@
 {
   "pages": [
+    "pages/me-page/index",
+    "pages/huangLi/huangLi",
+    "pages/joke/joke",
+    "pages/dream/dream",
     "pages/main-page/main-page",
     "pages/home-page/index",
     "pages/logo-page/logo-page",
     "pages/weather_page/weather_page",
-    "pages/me-page/index",
     "pages/shopping-cart-page/index",
     "pages/canvas_page/canvas_page",
     "pages/map-page/map-page"
@@ -18,15 +21,27 @@
   },
   "tabBar": {
     "color": "#2c2c2c",
-    "selectedColor": "#d81e06",
+    "selectedColor": "#636363",
     "borderStyle": "white",
-    "backgroundColor": "#ffffff",
+    "backgroundColor": "#d3ad76",
     "list": [
       {
-        "pagePath": "pages/main-page/main-page",
-        "iconPath": "static/home-page/shouye.png",
-        "selectedIconPath": "static/home-page/shouyefill.png",
-        "text": "首页"
+        "pagePath": "pages/huangLi/huangLi",
+        "iconPath": "static/huangLi.png",
+        "selectedIconPath": "static/huangLi.png",
+        "text": "老黄历"
+      },
+      {
+        "pagePath": "pages/dream/dream",
+        "iconPath": "static/zhouGong.png",
+        "selectedIconPath": "static/zhouGong.png",
+        "text": "周公解梦"
+      },
+      {
+        "pagePath": "pages/joke/joke",
+        "iconPath": "static/joke.png",
+        "selectedIconPath": "static/joke.png",
+        "text": "轻松一笑"
       },
       {
         "pagePath": "pages/me-page/index",
@@ -36,6 +51,5 @@
       }
     ]
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap.json"
+  "usingComponents": {}
 }

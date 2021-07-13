@@ -1,6 +1,53 @@
 {
 	"pages": [
 		{
+			"path": "pages/me-page/index",
+			"style": {
+				"navigationBarTitleText": "我的",
+				"navigationBarBackgroundColor":"#d3ad76",
+				"navigationBarTextStyle":"white"
+			}
+		},
+		{
+		    "path" : "pages/lanYa/lanYa",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		},
+		{
+		    "path" : "pages/huangLi/huangLi",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "老黄历",
+						"navigationBarBackgroundColor":"#d3ad76",
+		        "enablePullDownRefresh": false
+		    }
+		},
+		{
+				"path" : "pages/joke/joke",
+				"style" :                                                                                    
+				{
+						"navigationBarTitleText": "轻松一笑",
+						"navigationBarBackgroundColor":"#d3ad76",
+						"enablePullDownRefresh": false
+				}
+				
+		},
+		{
+				"path" : "pages/dream/dream",
+				"style" :                                                                                    
+				{
+						"navigationBarTitleText": "周公解梦",
+						"navigationBarBackgroundColor":"#d3ad76",
+						"enablePullDownRefresh": false
+				}
+				
+		},
+		
+		{
 			"path" : "pages/main-page/main-page",
 			"style" :                                                                                    
 			{
@@ -30,14 +77,7 @@
 		        "enablePullDownRefresh": false
 		    }
 		},
-		{
-			"path": "pages/me-page/index",
-			"style": {
-				"navigationBarTitleText": "我的",
-				"navigationBarBackgroundColor":"#ffaa7f",
-				"navigationBarTextStyle":"white"
-			}
-		},
+
 		{
 			"path": "pages/shopping-cart-page/index",
 			"style": {
@@ -65,6 +105,7 @@
             }
             
         }
+        
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
@@ -77,15 +118,34 @@
 	},
 	"tabBar": {
     "color": "#2c2c2c",
-    "selectedColor": "#d81e06",
+    "selectedColor": "#636363",
     "borderStyle": "white",
-    "backgroundColor": "#ffffff",
+    "backgroundColor": "#d3ad76",
     "list": [ {
-        "pagePath": "pages/main-page/main-page",
-        "iconPath": "static/home-page/shouye.png",
-        "selectedIconPath": "static/home-page/shouyefill.png",
-        "text": "首页"
-    },{
+        "pagePath": "pages/huangLi/huangLi",
+        "iconPath": "static/huangLi.png",
+        "selectedIconPath": "static/huangLi.png",
+        "text": "老黄历"
+    },
+		{
+        "pagePath": "pages/dream/dream",
+        "iconPath": "static/zhouGong.png",
+        "selectedIconPath": "static/zhouGong.png",
+        "text": "周公解梦"
+    },
+		{
+		    "pagePath": "pages/joke/joke",
+		    "iconPath": "static/joke.png",
+		    "selectedIconPath": "static/joke.png",
+		    "text": "轻松一笑"
+		},
+		// {
+  //       "pagePath": "pages/main-page/main-page",
+  //       "iconPath": "static/home-page/shouye.png",
+  //       "selectedIconPath": "static/home-page/shouyefill.png",
+  //       "text": "首页"
+  //   },
+		{
         "pagePath": "pages/me-page/index",
         "iconPath": "static/home-page/geren.png",
         "selectedIconPath": "static/home-page/gerenfill.png",

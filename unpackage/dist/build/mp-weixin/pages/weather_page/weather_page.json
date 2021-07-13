@@ -2,7 +2,6 @@
   "navigationBarTitleText": "今日天气",
   "enablePullDownRefresh": false,
   "usingComponents": {
-    "u-button": "/node-modules/uview-ui/components/u-button/u-button",
     "u-picker": "/node-modules/uview-ui/components/u-picker/u-picker",
     "u-divider": "/node-modules/uview-ui/components/u-divider/u-divider"
   }

@@ -1,6 +1,6 @@
 {
   "navigationBarTitleText": "我的",
-  "navigationBarBackgroundColor": "#ffaa7f",
+  "navigationBarBackgroundColor": "#d3ad76",
   "navigationBarTextStyle": "white",
   "usingComponents": {
     "uni-grid": "/components/uni-grid/uni-grid",

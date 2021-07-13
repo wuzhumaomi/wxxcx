@@ -41,7 +41,9 @@
             },
             "ios" : {},
             /* ios打包配置 */
-            "sdkConfigs" : {}
+            "sdkConfigs" : {
+                "ad" : {}
+            }
         }
     },
     /* SDK配置 */
@@ -50,7 +52,7 @@
     "mp-weixin" : {
         /* 小程序特有相关 */
         "appid" : "wxcbaa212bcb33c859",
-				// "cloudfunctionRoot":'static/cloudfunctions',
+        // "cloudfunctionRoot":'static/cloudfunctions',
         "setting" : {
             "urlCheck" : false
         },

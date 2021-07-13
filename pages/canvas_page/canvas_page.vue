@@ -14,7 +14,6 @@
 			
 			<u-button v-if="!canvasShow" @click="shareClick" class="UBtn" type="primary">将上述图片生成图片并保存</u-button>
 			
-			
     </view>
 		
 		<view class="canvasContent" v-if="canvasShow">
@@ -35,8 +34,8 @@ export default {
 			canvasText:'',
 			canvasShow: false,
 			ifShouQuan: false,
-			url01:'https://img-pre.ivsky.com/img/tupian/pre/201911/10/wu_shanlin.jpg',
-			url02:'https://qr.api.cli.im/newqr/create?data=%E4%BD%A0%E5%A5%BD&level=H&transparent=0&bgcolor=%23ffffff&forecolor=%2368B56B&blockpixel=12&marginblock=2&logourl=null&size=400&logoshape=no&embed_text_fontfamily=simhei.ttc&foretype=2&gradient_way=slash&forecolor2=%2321938E&eye_use_fore=1&qrcode_eyes=pin-4.png&outcolor=%239A3131&incolor=%237D4646&body_type=25&water_ratio=1&qr_rotate=0&text=&fontfamily=simhei.ttc&logo_pos=0&kid=bizcliim&time=1614067216&key=d88a90a83a4e30c3770b9c7b4d45b876',
+			url01:'cloud://ilovejiujiu.696c-ilovejiujiu-1301925360/img/wu_shanlin.jpg',
+			url02:'cloud://ilovejiujiu.696c-ilovejiujiu-1301925360/img/erWeiMa.png',
 			src2:'',
 			nickName:''
     }
@@ -86,7 +85,8 @@ export default {
 	},
   methods: {
 				toMain(){
-					wx.switchTab({url:'/pages/main-page/main-page'})
+					this.canvasShow = false
+					// wx.switchTab({url:'/pages/main-page/main-page'})
 				},
 				
         //这是一个封装好的方法 

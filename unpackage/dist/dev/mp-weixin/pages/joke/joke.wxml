@@ -1,0 +1,1 @@
+<view class="joke"><block wx:for="{{jokeList}}" wx:for-item="item" wx:for-index="i"><view class="list"><view class="btnText">{{''+(i+1+'.  '+item.content)+''}}</view></view></block></view>
