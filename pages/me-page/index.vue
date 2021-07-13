@@ -69,69 +69,6 @@
 				</view>
 			</view>
 		</view>
-		<!-- 功能块 -->
-		<view class="topView-bot boxshow">
-			<view class="numbView">
-				<text class="topText">{{number01}}</text>
-				<text class="botText">我发布的</text>
-			</view>
-			<view class="numbView">
-				<text class="topText">{{number02}}</text>
-				<text class="botText">我卖出的</text>
-			</view>
-			<view class="numbView">
-				<text class="topText">{{number01}}</text>
-				<text class="botText">我买到的</text>
-			</view>
-			<view class="numbView">
-				<text class="topText">{{number01}}</text>
-				<text class="botText">我想要的</text>
-			</view>
-		</view>
-		<!-- 功能 -->
-		<view class="listView boxshow">
-			<uni-grid class="functionView boxshow" :show-border="false" name='uni-grid' :column="4">
-				<uni-grid-item>
-					<view class="itemBody">
-						<image src="../../static/user-page/hongbao.png" class="icon-img"></image>
-						我的红包
-					</view>
-				</uni-grid-item>
-				<uni-grid-item>
-					<view class="itemBody">
-						<image src="../../static/user-page/lipin.png" class="icon-img"></image>
-						活动中心
-					</view>
-				</uni-grid-item>
-				<uni-grid-item>
-					<view class="itemBody">
-						<image src="../../static/user-page/kefu.png" class="icon-img"></image>
-						客服中心
-					</view>
-				</uni-grid-item>
-				<uni-grid-item>
-					<view class="itemBody">
-						<image src="../../static/user-page/xinyongka.png" class="icon-img"></image>
-						借钱
-					</view>
-				</uni-grid-item>
-				<uni-grid-item>
-					<view class="itemBody">
-						<image src="/static/user-page/gouwu.png" class="icon-img"></image>
-						旧机还钱
-					</view>
-				</uni-grid-item>
-				<uni-grid-item>
-					<view class="itemBody">
-						<image src="../../static/user-page/tongzhi.png" class="icon-img"></image>
-						我的信息
-					</view>
-				</uni-grid-item>
-			</uni-grid>
-		</view <!-- 广告 -->
-
-		<Advertsing></Advertsing>
-		<!--  -->
 
 		<!-- 列表 -->
 		<button style="opacity: 0;position: absolute;" open-type="share">分享给好友</button>
