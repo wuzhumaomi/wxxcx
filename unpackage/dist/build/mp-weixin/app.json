@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/me-page/index",
+    "pages/lanYa/lanYa",
     "pages/huangLi/huangLi",
     "pages/joke/joke",
     "pages/dream/dream",
@@ -51,5 +52,6 @@
       }
     ]
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json"
 }

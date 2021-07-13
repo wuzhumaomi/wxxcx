@@ -164,7 +164,7 @@
 				show: false,
 				mode: 'date',
 				date: '1999/4/27',
-				date2: '2020/01/26',
+				date2: '2020/01/29',
 				
 				miao: 0,
 				fen: 0,
