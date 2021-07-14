@@ -4,8 +4,6 @@
   "navigationBarTextStyle": "white",
   "usingComponents": {
     "u-calendar": "/node-modules/uview-ui/components/u-calendar/u-calendar",
-    "uni-list": "/components/uni-list/uni-list",
-    "uni-list-item": "/components/uni-list-item/uni-list-item",
     "advertsing": "/pages/components/advertising/index"
   }
 }

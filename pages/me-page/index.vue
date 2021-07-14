@@ -9,16 +9,21 @@
 		</view>
 		
 		<view class="">
-			生日： <text >{{date}}</text>
-			<u-calendar v-model="show" :mode="mode"></u-calendar>
+			{{nian2}}岁
 		</view>
-		
+		<view class="">
+			星座：{{getConstellation}}
+		</view>
+		<view class="">
+			属相：{{getSign}}
+		</view>
+		<view class="">
+			生日： <text @click="show2 = true">{{date}}</text>
+			<u-calendar v-model="show2" :mode="mode" @change="change2"></u-calendar>
+		</view>
 		<view class="">
 			告白日期： <text @click="show = true">{{date2}}</text>
 			<u-calendar v-model="show" :mode="mode" @change="change"></u-calendar>
-		</view>
-		<view class="">
-			星座：金牛座
 		</view>
 		
 		<view class="">
@@ -37,9 +42,8 @@
 			{{miao}}秒
 		</view>
 		
-		
 		<view class="">
-			生日：
+			距离生日：
 		</view>
 		<view>
 			{{tian2}}天
@@ -54,40 +58,12 @@
 			{{miao2}}秒
 		</view>
 		
-		
-		<view class="userBox">
-			<view class="userImg">
-				<open-data type="userAvatarUrl"></open-data>
-			</view>
-			<view class="userInfo">
-				<view class="userName">
-					<open-data type="userNickName"></open-data>
-				</view>
-				<view class="userText">
-					<!-- 来自弗雷尔卓德的一位前端召唤师 -->
-					{{}}
-				</view>
-			</view>
-		</view>
-
-		<!-- 列表 -->
-		<button style="opacity: 0;position: absolute;" open-type="share">分享给好友</button>
-		<view class="listView boxshow">
-			<uni-list class="listView boxshow">
-				<uni-list-item title="分享到朋友圈" link="reLaunch" @click="onClick()"></uni-list-item>
-				<uni-list-item title="分享给好友" link="reLaunch" @click="updateFile()"></uni-list-item>
-				<uni-list-item title="平台规则" link="reLaunch"
-					@click="downloadfile('cloud://ilovejiujiu.696c-ilovejiujiu-1301925360/upload/10d6d987424431423af161bdac26d545.jpg')">
-				</uni-list-item>
-			</uni-list>
-		</view>
-
-		{{fileHref}}
 
 	</view>
 
 </template>
 <script>
+	import zhuanHuan from '@/pages/components/Time.js'
 	import Advertsing from '@/pages/components/advertising/index.vue'
 	import canvasPage from '@/pages/canvas_page/canvas_page.vue'
 	export default {
@@ -97,11 +73,15 @@
 		},
 		data() {
 			return {
-				
+				show2: false,
 				show: false,
 				mode: 'date',
+				// 年纪
+				nian2:0,
+				// 生日
 				date: '1999/4/27',
-				date2: '2020/01/29',
+				// 紀念日
+				date2: '2020/01/29 22:36:00',
 				
 				miao: 0,
 				fen: 0,
@@ -131,6 +111,21 @@
 				}]
 			}
 		},
+		computed:{
+			getSign(){
+				let t = zhuanHuan.toLunar(this.date)
+				return t[3]+'-'+t[4]
+			},
+			// 星座
+			getConstellation(){ 
+				let m = new Date(this.date).getMonth() + 1
+				let d = new Date(this.date).getDate()
+				console.log(' 星座 ',m,d)
+				var s="魔羯水瓶双鱼白羊金牛双子巨蟹狮子处女天秤天蝎射手魔羯";
+				var arr=[20,19,21,21,21,22,23,23,23,23,22,22];
+				return s.substr(m*2-(d<arr[m-1]?2:0),2);
+			}
+		},
 		created() {
 			let _t = this
 			setInterval(function () {
@@ -143,34 +138,48 @@
 				this.date2 = e.result
 				console.log(e);
 			},
+			change2(e) {
+				this.date = e.result
+				console.log(e);
+			},
 			updateFile() {
 
 			},
 			getTime(){
 				let time = new Date() - new Date(this.date2)
-				this.miao = time / 1000
-				this.fen = time / 1000 / 60
-				this.shi = time / 1000 / 60 / 60
-				this.tian = time / 1000 / 60 / 60 / 24
+				this.miao = parseInt(time / 1000)
+				this.fen = parseInt(time / 1000 / 60)
+				this.shi = parseInt(time / 1000 / 60 / 60)
+				this.tian = parseInt(time / 1000 / 60 / 60 / 24)
 			},
 			getTime2(){
+				let _t = this
 				let time = new Date()
-				let nian =0;
+				let nian = 0;
 				let yue = 4
 				let tian = 27
+				// 现在的时间
+				let xianNian = new Date().getFullYear()
+				// 出生时间
+				let shengNian = new Date(this.date).getFullYear()
+				
 				if(new Date().getMonth() + 1 < yue || (new Date().getDate() < tian && new Date().getMonth() + 1 == yue)){
 					nian = new Date().getFullYear()
+					// 年龄
+					_t.nian2 = xianNian - shengNian - 1
 				}else{
 					nian = new Date().getFullYear() + 1
+					// 年龄
+					_t.nian2 = xianNian - shengNian
 				}
 				// let time = new Date() - new Date(this.date2)
 				// console.log(nian+'/'+yue+'/'+tian)
 				let time2 = new Date(nian+'/'+yue+'/'+tian) - new Date()
-				
-				this.miao2 = time2 / 1000
-				this.fen2 = time2 / 1000 / 60
-				this.shi2 = time2 / 1000 / 60 / 60
-				this.tian2 = time2 / 1000 / 60 / 60 / 24 
+				 
+				this.miao2 = parseInt(time2 / 1000)
+				this.fen2 = parseInt(time2 / 1000 / 60)
+				this.shi2 = parseInt(time2 / 1000 / 60 / 60)
+				this.tian2 = parseInt(time2 / 1000 / 60 / 60 / 24 )
 			},
 			downloadfile(fileID) {
 
