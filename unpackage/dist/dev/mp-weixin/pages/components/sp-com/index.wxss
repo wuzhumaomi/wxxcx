@@ -35,7 +35,8 @@
   width: 40%;
   height: 600rpx;
   background-color: #ffffff;
-  box-shadow: 0 0 6px #C8C8C8;
+  -webkit-box-shadow: 0 0 6px #C8C8C8;
+          box-shadow: 0 0 6px #C8C8C8;
   border-radius: 20rpx;
   margin-top: 20rpx;
   overflow: auto;

@@ -107,6 +107,18 @@
         }
         
     ],
+		// 分包
+		// "subPackages": [{
+		// 	"root": "pagesA",
+		// 	"pages": [{
+		// 			"path": "pages/me-page/index",
+		// 			"style": {
+		// 				"navigationBarTitleText": "我的",
+		// 				"navigationBarBackgroundColor":"#d3ad76",
+		// 				"navigationBarTextStyle":"white"
+		// 			}
+		// 	}]
+		// }],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "首页",

@@ -50,7 +50,8 @@
   margin-top: 10vh;
 }
 .shopping-cart-page .btn-view {
-  box-shadow: 0 0 5px #e3e3e3;
+  -webkit-box-shadow: 0 0 5px #e3e3e3;
+          box-shadow: 0 0 5px #e3e3e3;
   position: absolute;
   height: 80rpx;
   background-color: #ffffff;

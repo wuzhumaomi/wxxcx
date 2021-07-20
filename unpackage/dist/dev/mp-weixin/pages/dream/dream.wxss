@@ -39,7 +39,8 @@
 }
 .allBox .inputBox input, .allBox .inputBox button {
   border: 1rpx solid #d3ad76;
-  box-shadow: 0 0 8rpx #d3ad76;
+  -webkit-box-shadow: 0 0 8rpx #d3ad76;
+          box-shadow: 0 0 8rpx #d3ad76;
   background-color: #e6caa3;
   padding: 20rpx;
   border-radius: 20rpx;
@@ -48,7 +49,8 @@
 .allBox .list {
   margin-top: 10rpx;
   border: 1rpx solid #d3ad76;
-  box-shadow: 0 0 8rpx #d3ad76;
+  -webkit-box-shadow: 0 0 8rpx #d3ad76;
+          box-shadow: 0 0 8rpx #d3ad76;
   border-radius: 6rpx;
   background-color: #e6caa3;
 }

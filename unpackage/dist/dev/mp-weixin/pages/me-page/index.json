@@ -3,7 +3,6 @@
   "navigationBarBackgroundColor": "#d3ad76",
   "navigationBarTextStyle": "white",
   "usingComponents": {
-    "u-calendar": "/node-modules/uview-ui/components/u-calendar/u-calendar",
     "advertsing": "/pages/components/advertising/index"
   }
 }

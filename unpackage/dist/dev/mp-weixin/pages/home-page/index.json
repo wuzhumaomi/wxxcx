@@ -3,8 +3,6 @@
   "navigationBarBackgroundColor": "#550000",
   "navigationBarTextStyle": "white",
   "usingComponents": {
-    "index-u-waterfall-left": "/pages/home-page/index-u-waterfall-left",
-    "index-u-waterfall-right": "/pages/home-page/index-u-waterfall-right",
     "uni-list": "/components/uni-list/uni-list",
     "uni-list-item": "/components/uni-list-item/uni-list-item",
     "u-waterfall": "/node-modules/uview-ui/components/u-waterfall/u-waterfall",
