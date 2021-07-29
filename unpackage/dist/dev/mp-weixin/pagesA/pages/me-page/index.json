@@ -1,8 +1,0 @@
-{
-  "navigationBarTitleText": "我的",
-  "navigationBarBackgroundColor": "#d3ad76",
-  "navigationBarTextStyle": "white",
-  "usingComponents": {
-    "advertsing": "/pages/components/advertising/index"
-  }
-}

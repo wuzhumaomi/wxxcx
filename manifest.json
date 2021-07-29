@@ -56,6 +56,12 @@
         "setting" : {
             "urlCheck" : false
         },
-        "usingComponents" : true
+				"useExtendedLib": {
+					"weui": true
+				},
+        "usingComponents" : {
+					"mp-cell": "../components/cell/cell",
+					"mp-dialog": "../components/dialog/dialog"
+				}
     }
 }

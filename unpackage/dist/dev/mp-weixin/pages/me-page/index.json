@@ -1,8 +1,8 @@
 {
   "navigationBarTitleText": "我的",
-  "navigationBarBackgroundColor": "#d3ad76",
-  "navigationBarTextStyle": "white",
+  "navigationBarBackgroundColor": "#FFFFFF",
   "usingComponents": {
-    "advertsing": "/pages/components/advertising/index"
+    "uni-popup": "/components/uni-popup/uni-popup",
+    "mp-dialog": "weui-miniprogram/dialog/dialog"
   }
 }

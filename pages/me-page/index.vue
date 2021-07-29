@@ -1,95 +1,93 @@
 <template>
-	<view class=" mePage">
-		<view class="bodyView">
-		</view>
+	<view class="mePage">
 		<view class="topView">
-			<view>
 
-			</view>
 		</view>
 
-		<view class="sj_card" v-for="obj of timeList">
-			<view class="deleteView" @click="deleteObj(obj)">
-				关闭
-			</view>
-			
-			<view v-if='obj.type == "Personnel"'>
+		<view class="bodyView">
+			<view class="sj_card" v-for="(obj,index) in timeList" :key='index'> 
+				<view class="deleteView" @click="deleteObj(obj)">
+					关闭
+				</view>
 				
-				<view class="mxp" v-for=""> 
-					<view class="">
-						
+				<view v-if='obj.type == "Personnel"'>
+					
+					<view class="mxp" v-for=""> 
+						<view class="">
+							
+						</view>
+						<view class="">
+							<view class="">
+								姓名：{{obj.name}}
+							</view>
+							<view class="">
+								年纪：{{pastTime(obj.time).nianJi}}岁
+							</view>
+							<view class="">
+								星座：{{getConstellation(obj.time)}}
+							</view>
+							<view class="">
+								属相：{{getSign(obj.time).shuXiang}}
+							</view>
+							<view class="">
+								破壳日： {{obj.time}}
+							</view>
+							<view class="">
+								生辰(农历)： <text >{{getSign(obj.time).shengChen}}</text>
+							</view>
+							<view class="">
+								距离生日：{{pastTime(obj.time).tian}}天
+							</view>
+						</view>
+					</view>
+					
+				</view>
+				
+				<view v-if='obj.type == "Date"'>
+				
+					<view class="sj_card_name">
+						{{obj.name}}
 					</view>
 					<view class="">
-						<view class="">
-							姓名：{{obj.name}}
-						</view>
-						<view class="">
-							年纪：{{pastTime(obj.time).nianJi}}岁
-						</view>
-						<view class="">
-							星座：{{getConstellation(obj.time)}}
-						</view>
-						<view class="">
-							属相：{{getSign(obj.time).shuXiang}}
-						</view>
-						<view class="">
-							破壳日： {{obj.time}}
-						</view>
-						<view class="">
-							生辰(农历)： <text >{{getSign(obj.time).shengChen}}</text>
-						</view>
-						<view class="">
-							距离生日：{{pastTime(obj.time).tian}}天
-						</view>
+						日期： <text>{{obj.time}}</text>
 					</view>
-				</view>
-				
-			</view>
-			
-			<view v-if='obj.type == "Date"'>
-			
-				<view class="sj_card_name">
-					{{obj.name}}
-				</view>
-				<view class="">
-					日期： <text>{{obj.time}}</text>
-				</view>
-				
-				<view class="timeStatistics">
-					<view class=""  v-if="obj.ifShow != 0">
-						<view class="">
-							到 {{(new Date(obj.time).getMonth() + 1) + '-' + new Date(obj.time).getDate()}} 时间
+					
+					<view class="timeStatistics">
+						<view class=""  v-if="obj.ifShow != 0">
+							<view class="">
+								到 {{(new Date(obj.time).getMonth() + 1) + '-' + new Date(obj.time).getDate()}} 时间
+							</view>
+							<view>
+								还有{{pastTime(obj.time).tian}}天
+							</view>
+							<view>
+								还有{{pastTime(obj.time).shi}}小时
+							</view>
+							<view>
+								还有{{pastTime(obj.time).fen}}分钟
+							</view>
+							<view>
+								还有{{pastTime(obj.time).miao}}秒
+							</view>
 						</view>
-						<view>
-							{{pastTime(obj.time).tian}}天
-						</view>
-						<view>
-							{{pastTime(obj.time).shi}}小时
-						</view>
-						<view>
-							{{pastTime(obj.time).fen}}分钟
-						</view>
-						<view>
-							{{pastTime(obj.time).miao}}秒
-						</view>
-						
-					</view>
-				
-					<view class="" v-if="obj.ifShow != 1">
-						<view class="">
-							过了多久了
-						</view>
-						<view>
-							{{waitingTime(obj.time).tian}}天
-						</view>
-						<view>
-							{{waitingTime(obj.time).shi}}小时
-						</view>
-						<view>
-							{{waitingTime(obj.time).fen}}分钟
-						</view>
-						<view>
-							{{waitingTime(obj.time).miao}}秒
+					
+						<view class="" v-if="obj.ifShow != 1">
+							<view class="">
+								纪念日
+							</view>
+							<view>
+								已经过了{{waitingTime(obj.time).tian}}天
+							</view>
+							<view>
+								已经过了{{waitingTime(obj.time).shi}}小时
+							</view>
+							<view>
+								已经过了{{waitingTime(obj.time).fen}}分钟
+							</view>
+							<view>
+								已经过了{{waitingTime(obj.time).miao}}秒
+							</view>
+							
 						</view>
 						
 					</view>
@@ -100,55 +98,83 @@
 			
 		</view>
 		
-		<view class="formView" >
-			<view class="formView_top">
-				添加事件 or 添加人物
-			</view>
-			<form @submit="formSubmit" @reset="formReset">
-					<view class="uni-form-item uni-column">
-							<view class="title">称谓/姓名/事件</view>
-							<input class="uni-input" name="name" placeholder="称谓/姓名/事件" />
-					</view>
-					<view class="uni-form-item uni-column">
-							<view class="title">时间</view>
-							<input class="uni-input" name="time" placeholder="时间" />
-					</view>
+		<mp-dialog title="test" :show="dialogShow" @buttontap="tapDialogButton" :buttons="buttons">
+		 
+		</mp-dialog>
 		
-					<view class="uni-form-item uni-column">
-							<view class="title">卡片类型</view>
-							<radio-group name="type">
-									<label>
-											<radio value="Personnel" /><text>角色</text>
-									</label>
-									<label>
-											<radio value="Date" /><text>事件</text>
-									</label>
-							</radio-group>
-					</view>
-					
-					<view class="uni-form-item uni-column">
-							<view class="title">显示内容</view>
-							<radio-group name="ifShow">
-									<label>
-											<radio value="0" /><text>多久了</text>
-									</label>
-									<label>
-											<radio value="1" /><text>还要多久到纪念日</text>
-									</label>
-									<label>
-											<radio value="2" /><text>都要</text>
-									</label>
-							</radio-group>
-					</view>
-					
-					<view class="uni-btn-v">
-							<button form-type="submit">Submit</button>
-							<button type="default" form-type="reset">Reset</button>
-					</view>
-			</form>
+		
+		<!-- @click="dialogShow = true" -->
+		<view class="add_btn"  @click="open" >
 			
 		</view>
 		
+		<uni-popup ref="popup" type="bottom">
+			
+			<view class="formView" >
+			
+				<form id="form" ref="formView" @submit="formSubmit" @reset="formReset">
+					
+						<view class="formView_top">
+							<view class="" form-type="reset" @click="formReset">
+								取消
+							</view>
+							<view class="">
+								添加新卡片
+							</view>
+							<view class="" form-type="submit" @click="formSubmit">
+								保存
+							</view>
+						</view>
+					<!-- {{form.name}} -->
+						<view class="uni-form-item uni-column">
+								<input class="uni-input form_name" placeholder-class="phcolor" v-model='form.name' name="name" placeholder="输入称谓/姓名/事件名称" />
+						</view>
+						<view class="uni-form-item uni-column">
+								<view class="title">时间</view>
+								
+								<picker data-field="date" mode="date" :value="form.time" @change="bindDateChange">
+										<view class="weui-input">{{form.time}}</view>
+								</picker>
+								<input class="uni-input" style="display: none;" v-model="form.time" name="time" placeholder="时间" />
+						</view>
+			
+						<view class="uni-form-item uni-column">
+								<view class="title">卡片分类</view>
+								<radio-group name="type"  @change="(e)=>{form.type = e.detail.value}">
+										<label>
+												<radio value="Date"  checked="true"/><text>事件</text>
+										</label>
+										<label>
+												<radio value="Personnel" /><text>角色</text>
+										</label>
+								</radio-group>
+						</view>
+						
+						<view class="uni-form-item uni-column">
+								<view class="title">内容分类</view>
+								<radio-group name="ifShow" @change="(e)=>{form.ifShow = e.detail.value}"  >
+										<label>
+												<radio value="0"  checked="true"/><text>纪念日</text>
+										</label>
+										<label>
+												<radio value="1" /><text>倒计时</text>
+										</label>
+										<label>
+												<radio value="2" /><text>都要</text>
+										</label>
+								</radio-group>
+						</view>
+						
+						<!-- <view class="uni-btn-v form_btn_div">
+								<button form-type="submit">添加</button>
+								<button type="default" form-type="reset">取消</button>
+						</view> -->
+				</form>
+				
+				
+			</view>
+			
+		</uni-popup>
 	</view>
 
 </template>
@@ -157,6 +183,7 @@
 	import zhuanHuan from '@/pages/components/Time.js'
 	import Advertsing from '@/pages/components/advertising/index.vue'
 	import canvasPage from '@/pages/canvas_page/canvas_page.vue'
+	// "mp-dialog": "../components/dialog/dialog"
 	export default {
 		components: {
 			Advertsing,
@@ -164,6 +191,10 @@
 		},
 		data() {
 			return {
+				dialogShow:false,
+				// {text: '取消'}, {text: '确定'}
+				buttons: [],
+				
 				show: false,
 				mode: 'date',
 				
@@ -178,11 +209,13 @@
 				date2: '2020/01/29 22:36:00',
 				
 				form: {
-					name: '',
 					intro: '',
-					time: '',
-					type: '',
-					radio: ''
+					radio: '',
+					
+					time: '1999/4/27',
+					name: '',
+					type: 'Date',
+					ifShow: 0,
 				},
 		
 				radioList: [
@@ -254,10 +287,6 @@
 			}
 		},
 		onReady(){
-		},
-		computed:{
-		},
-		created() {
 			let _t = this
 			setInterval(function () {
 				_t.timeList = [..._t.timeList]
@@ -266,29 +295,46 @@
 			console.log(' --调动-- ')
 			// api.uploadExcel.main()
 		},
+		computed:{
+		},
+		created() {
+		},
 		methods: {
+			open(){
+				// 通过组件定义的ref调用uni-popup方法 ,如果传入参数 ，type 属性将失效 ，仅支持 ['top','left','bottom','right','center']
+				this.$refs.popup.open('top')
+			},
+			tapDialogButton(e) {
+				console.log(e)
+				this.dialogShow=false
+				
+				// this.showOneButtonDialog=false
+			},
+			bindDateChange: function (e) {
+				this.form.time = e.detail.value
+			},
 			formSubmit: function(e) {
-					console.log('form发生了submit事件，携带数据为：' + JSON.stringify(e.detail.value))
-					var formdata = e.detail.value
-					this.add(formdata)
+					// this.form
+					// console.log('form发生了submit事件，携带数据为：' + JSON.stringify(e.detail.value))
+					// var formdata = e.detail.value
+					debugger
+					if(this.form.name && this.form.time ){
+						this.add(this.form)
+						this.dialogShow=false
+					}else{
+						uni.showModal({
+								content: '请输入完整数据',
+								showCancel: false
+						});
+					}
 			},
 			formReset: function(e) {
 					console.log('清空数据')
+					this.form = {}
+					this.dialogShow=false
 			},
 			change(e){
 					console.log('e:',e);
-			},
-			submit() {
-				console.log('验证',this.form);
-				
-				this.$refs.uForm.validate(valid => {
-					console.log('验证',valid);
-					if (valid) {
-						console.log('验证通过',this.form);
-					} else {
-						console.log('验证失败');
-					}
-				});
 			},
 			// 添加数据
 			add(obj){
@@ -490,33 +536,80 @@
 	}
 </script>
 <style lang="scss">
+	$hei01: #bfbec4;
+	$hei02: #8f939c;
+	$hei03: #1c1a2f;
+	$lan: #5391a6;
+	$qing: #59c3b7;
+	$cheng: #f6b758;
 	// html,body{
 	// 	background-color: red;
 	// }
 	.mePage {
-		padding: 20rpx;
-		min-height: 100vh;
-		background-color: #eadac0;
+		// // padding: 20rpx;
+		// min-height: 100vh;
+		// // background: url('https://img.cc0.cn//pixabay/2019102220063337385.jpg/w320.jpg') no-repeat;
+		// background: url('https://img.cc0.cn//pixabay/2019102220063337385.jpg/w320.jpg') no-repeat;
+		// 		// 
+		// background-size: 100% auto;
+		// background-color: #f6f6f6;
+		
+		.bodyView{
+			position: absolute;
+			width: 100%;
+			top: 25vh;
+			left: 0;
+			
+			padding: 20rpx;
+			border-top-left-radius: 60rpx;
+			border-top-right-radius: 60rpx;
+			background-color: #fcfdfd;
+		}
 
+		.add_btn{
+			width: 100rpx;
+			height: 100rpx;
+			position: fixed;
+			
+			border-radius: 50%;
+			background-color: #3e3e3e;
+			border: 1rpx solid #ffffff;
+			
+			bottom: 10rpx;
+			right: 10rpx;
+		}
+		.add_btn::after{
+			content: ' ';
+			
+			width: 5rpx;
+			height: 50rpx;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			background-color: #ffffff;
+			transform: translate(-50%,-50%);
+		}
+		.add_btn::before{
+			content: ' ';
+			
+			width: 50rpx;
+			height: 5rpx;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			background-color: #ffffff;
+			transform: translate(-50%,-50%);
+		}
 		// z-index: -1;
 		// 头像背景块
 		.topView {
-			position: absolute;
-			top: 0;
-			left: 0;
+			// position: absolute;
+			// top: 0;
+			// left: 0;
 			width: 100%;
-			height: 0rpx;
-
-
-			view {
-				width: 100%;
-				height: 20vh;
-				background-color: #d3ad76;
-				position: absolute;
-				top: 0;
-				left: 0;
-				z-index: -1;
-			}
+			height: 30vh;
+			background: url('https://img.cc0.cn//pixabay/2019102220063337385.jpg/w320.jpg') no-repeat;
+			background-size: 100% auto;
 		}
 
 		// 用户信息
@@ -650,14 +743,17 @@
 				flex: 1;
 			}
 		}
-		.sj_card,.formView{
+		.sj_card{
 			position: relative;
-			
 			margin: 15rpx;
 			padding: 10rpx 20rpx;
-			border: 1px solid #F29100;
+			// border: 1px solid #F29100;
 			border-radius: 15rpx;
-			background-color: rgba(255, 255, 255, 0.4);
+			// background-color: rgba(255, 255, 255, 0.4);
+			background-color: #ffffff;
+			box-shadow:0 0 20rpx #e8e8e8 ;
+			
+			min-height: 60rpx;
 		}
 		.timeStatistics{
 			display: flex;
@@ -674,11 +770,70 @@
 			position: absolute;
 			top: 10rpx;
 			right: 10rpx;
-			color: red;
+			color: #DD524D;
+		}
+		.formView{
+			text-align: left;
+			height: 70vh;
+			background-color: #f6f6f6;
+			
+			border-top-left-radius: 20rpx;
+			border-top-right-radius: 20rpx;
+			padding:25rpx 30rpx;
 		}
 		.formView_top{
-			color: #ffaa00;
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+			
+			margin-bottom: 40rpx;
+		}
+		.formView_top{
+			font-size: 28rpx;
+		}
+		.formView_top>view:nth-child(1){
+			color: $hei02;
+		}
+		.formView_top>view:nth-child(2){
+			color: #1c1a2f;
+			font-size: 30rpx;
+			font-weight: 600;
+		}
+		.formView_top>view:nth-child(3){
+			color: $lan;
+		}
+		
+		
+		.form_btn_div{
+			display: flex;
+			flex-direction: row;
+			
+			width: 100%;
+			position: absolute;
+			bottom: 10rpx;
+			left: 10rpx;
+			>button{
+				width: 40%;
+			}
+		}
+		.form_name{
+			height: 60rpx;
 			font-size: 36rpx;
+		}
+		.phcolor{
+			color:#bfbec4;
+		}
+		.formView view{
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			
+			margin-bottom: 20rpx;
+		}
+		.title{
+			color: #1c1a2f;
+			font-size: 26rpx;
 			font-weight: 600;
 		}
 	}

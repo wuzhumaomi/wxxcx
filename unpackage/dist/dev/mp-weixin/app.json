@@ -24,7 +24,7 @@
     "color": "#2c2c2c",
     "selectedColor": "#636363",
     "borderStyle": "white",
-    "backgroundColor": "#d3ad76",
+    "backgroundColor": "#FFFFFF",
     "list": [
       {
         "pagePath": "pages/huangLi/huangLi",
@@ -51,6 +51,9 @@
         "text": "我的"
       }
     ]
+  },
+  "useExtendedLib": {
+    "weui": true
   },
   "usingComponents": {}
 }

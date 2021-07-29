@@ -90,6 +90,7 @@
 		},
 		methods:{
 			laohuangli(data){
+	
 				let _t = this
 				api.request.laohuangliD(data)
 				.then(res => {
@@ -106,6 +107,9 @@
 					}
 				}).catch(e => {
 					console.log(e);
+					setTimeout(function(){
+						_t.laohuangli()
+					},1000)
 				})
 			},
 		}

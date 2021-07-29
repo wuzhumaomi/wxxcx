@@ -1,6 +1,6 @@
 {
   "navigationBarTitleText": "老黄历",
-  "navigationBarBackgroundColor": "#d3ad76",
+  "navigationBarBackgroundColor": "#FFFFFF",
   "enablePullDownRefresh": false,
   "usingComponents": {
     "u-tag": "/node-modules/uview-ui/components/u-tag/u-tag",
