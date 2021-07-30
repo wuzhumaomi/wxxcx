@@ -1,7 +1,17 @@
 <template>
 	<view class="mePage">
 		<view class="topView">
-
+			<view class="topView_top">
+				{{weekday[new Date().getDay()]}}
+			</view>
+			<view class="topView_concent">
+				<span>{{new Date().getFullYear() + '的第'}}</span> {{waitingTime(new Date().getFullYear()+'/1/1').tian}}
+				<span>天</span> 
+			</view>
+			<view class="topView_bto">
+				{{getSign(new Date()).shuXiang[0] + getSign(new Date()).shuXiang[1]  + getSign(new Date()).shengChen}}
+				{{version}}
+			</view>
 		</view>
 
 		<view class="bodyView">
@@ -112,8 +122,6 @@
 			
 			<view class="formView" >
 			
-				<form id="form" ref="formView" @submit="formSubmit" @reset="formReset">
-					
 						<view class="formView_top">
 							<view class="" form-type="reset" @click="formReset">
 								取消
@@ -127,7 +135,7 @@
 						</view>
 					<!-- {{form.name}} -->
 						<view class="uni-form-item uni-column">
-								<input class="uni-input form_name" placeholder-class="phcolor" v-model='form.name' name="name" placeholder="输入称谓/姓名/事件名称" />
+								<input :focus='true' class="uni-input form_name" placeholder-class="phcolor" v-model='form.name' name="name" placeholder="输入称谓/姓名/事件名称" />
 						</view>
 						<view class="uni-form-item uni-column">
 								<view class="title">时间</view>
@@ -140,19 +148,25 @@
 			
 						<view class="uni-form-item uni-column">
 								<view class="title">卡片分类</view>
-								<radio-group name="type"  @change="(e)=>{form.type = e.detail.value}">
+								<!-- typeList -->
+								<!-- {{form.type}} -->
+								<uni-data-checkbox mode='tag' :multiple="false" v-model="form.type" :localdata="typeList" @change="typeChange"></uni-data-checkbox>
+								<!-- <radio-group name="type"  @change="(e)=>{form.type = e.detail.value}">
 										<label>
 												<radio value="Date"  checked="true"/><text>事件</text>
 										</label>
 										<label>
 												<radio value="Personnel" /><text>角色</text>
 										</label>
-								</radio-group>
+								</radio-group> -->
 						</view>
 						
 						<view class="uni-form-item uni-column">
 								<view class="title">内容分类</view>
-								<radio-group name="ifShow" @change="(e)=>{form.ifShow = e.detail.value}"  >
+								<!-- {{form.ifShow}} -->
+								<uni-data-checkbox mode='tag' :multiple="false" v-model="form.ifShow" :localdata="ifShowType" @change="ifShowChange"></uni-data-checkbox>
+								<!-- <uni-data-checkbox v-model="form.ifShow" :localdata="ifShowType"></uni-data-checkbox> -->
+						<!-- 		<radio-group name="ifShow" @change="(e)=>{form.ifShow = e.detail.value}"  >
 										<label>
 												<radio value="0"  checked="true"/><text>纪念日</text>
 										</label>
@@ -162,14 +176,9 @@
 										<label>
 												<radio value="2" /><text>都要</text>
 										</label>
-								</radio-group>
+								</radio-group> -->
 						</view>
-						
-						<!-- <view class="uni-btn-v form_btn_div">
-								<button form-type="submit">添加</button>
-								<button type="default" form-type="reset">取消</button>
-						</view> -->
-				</form>
+				
 				
 				
 			</view>
@@ -191,15 +200,28 @@
 		},
 		data() {
 			return {
+				// 版本
+				version:'',
+				
 				dialogShow:false,
 				// {text: '取消'}, {text: '确定'}
 				buttons: [],
+				
+				weekday:["星期日","星期一","星期二","星期三","星期四","星期五","星期六"],
+				
+				ifShowType:[
+					{"value": 0,"text": "纪念日"},
+					{"value": 1,"text": "倒计时"},
+					{"value": 2,"text": "都要"}],
+				typeList:[
+					{"value": 'Personnel',"text": "人物"},
+					{"value": 'Date',"text": "事件"}
+				],
 				
 				show: false,
 				mode: 'date',
 				
 				value: [0,2],
-				range: [{"value": 0,"text": "篮球"    },{"value": 1,"text": "足球"},{"value": 2,"text": "游泳"}],
 				
 				// 年纪
 				nian2:0,
@@ -209,9 +231,6 @@
 				date2: '2020/01/29 22:36:00',
 				
 				form: {
-					intro: '',
-					radio: '',
-					
 					time: '1999/4/27',
 					name: '',
 					type: 'Date',
@@ -258,15 +277,15 @@
 						type:'Date'
 					},
 				],
-				miao: 0,
-				fen: 0,
-				shi: 0,
-				tian: 0,
+				// miao: 0,
+				// fen: 0,
+				// shi: 0,
+				// tian: 0,
 				
-				miao2: 0,
-				fen2: 0,
-				shi2: 0,
-				tian2: 0,
+				// miao2: 0,
+				// fen2: 0,
+				// shi2: 0,
+				// tian2: 0,
 
 				fileHref: '',
 				number01: 6,
@@ -295,19 +314,32 @@
 			console.log(' --调动-- ')
 			// api.uploadExcel.main()
 		},
-		computed:{
-		},
 		created() {
 		},
+		onShow() {
+			// 版本
+			const accountInfo2 = wx.getAccountInfoSync();
+			console.log(accountInfo2.miniProgram.appId) // 小程序 appId
+			console.log('小程序信息',accountInfo2) // 小程序版本号， 'a.b.c' 这样的形式
+			this.version = 'v' + (accountInfo2.miniProgram.version?accountInfo2.miniProgram.version:'空')
+		},
 		methods: {
+			typeChange(e){
+					console.log('e:',e.detail.value);
+					this.form.type = e.detail.value
+			},
+			ifShowChange(e){
+					console.log('e:',e.detail.value);
+					this.form.ifShow = e.detail.value
+			},
 			open(){
 				// 通过组件定义的ref调用uni-popup方法 ,如果传入参数 ，type 属性将失效 ，仅支持 ['top','left','bottom','right','center']
-				this.$refs.popup.open('top')
+				this.$refs.popup.open()
+				
 			},
 			tapDialogButton(e) {
 				console.log(e)
-				this.dialogShow=false
-				
+				this.$refs.popup.close()
 				// this.showOneButtonDialog=false
 			},
 			bindDateChange: function (e) {
@@ -317,10 +349,9 @@
 					// this.form
 					// console.log('form发生了submit事件，携带数据为：' + JSON.stringify(e.detail.value))
 					// var formdata = e.detail.value
-					debugger
 					if(this.form.name && this.form.time ){
 						this.add(this.form)
-						this.dialogShow=false
+						this.$refs.popup.close()
 					}else{
 						uni.showModal({
 								content: '请输入完整数据',
@@ -330,11 +361,12 @@
 			},
 			formReset: function(e) {
 					console.log('清空数据')
-					this.form = {}
-					this.dialogShow=false
-			},
-			change(e){
-					console.log('e:',e);
+					this.$refs.popup.close()
+					this.form = {
+					time: '1999/4/27',
+					name: '',
+					type: 'Date',
+					ifShow: 0,}
 			},
 			// 添加数据
 			add(obj){
@@ -381,6 +413,7 @@
 				let t = zhuanHuan.toLunar(date)
 				return {
 					shuXiang:t[3]+'-'+t[4],
+					shuXiang:[t[3],t[4]],
 					shengChen:t[0]+'/'+t[1]+'/'+t[2],
 				}
 			},
@@ -399,11 +432,12 @@
 			},
 			// 等待时间
 			waitingTime(date){
-				let time = new Date() - new Date(this.date2)
-				this.miao = parseInt(time / 1000)
-				this.fen = parseInt(time / 1000 / 60)
-				this.shi = parseInt(time / 1000 / 60 / 60)
-				this.tian = parseInt(time / 1000 / 60 / 60 / 24)
+				let time = new Date() - new Date(date)
+				// this.miao = parseInt(time / 1000)
+				// this.fen = parseInt(time / 1000 / 60)
+				// this.shi = parseInt(time / 1000 / 60 / 60)
+				// this.tian = parseInt(time / 1000 / 60 / 60 / 24)
+				
 				return{
 					miao:parseInt(time / 1000),
 					fen:parseInt(time / 1000 / 60),
@@ -429,22 +463,22 @@
 				if(new Date().getMonth() + 1 < yue || (new Date().getDate() < tian && new Date().getMonth() + 1 == yue)){
 					nian = new Date().getFullYear()
 					// 年龄
-					_t.nian2 = xianNian - shengNian - 1
+					// _t.nian2 = xianNian - shengNian - 1
 					nianJi = xianNian - shengNian - 1
 				}else{
 					nian = new Date().getFullYear() + 1
 					// 年龄
-					_t.nian2 = xianNian - shengNian
+					// _t.nian2 = xianNian - shengNian
 					nianJi = xianNian - shengNian
 				}
 				// let time = new Date() - new Date(this.date2)
 				// console.log(nian+'/'+yue+'/'+tian)
 				let time2 = new Date(nian+'/'+yue+'/'+tian) - new Date()
 				 
-				this.miao2 = parseInt(time2 / 1000)
-				this.fen2 = parseInt(time2 / 1000 / 60)
-				this.shi2 = parseInt(time2 / 1000 / 60 / 60)
-				this.tian2 = parseInt(time2 / 1000 / 60 / 60 / 24 )
+				// this.miao2 = parseInt(time2 / 1000)
+				// this.fen2 = parseInt(time2 / 1000 / 60)
+				// this.shi2 = parseInt(time2 / 1000 / 60 / 60)
+				// this.tian2 = parseInt(time2 / 1000 / 60 / 60 / 24 )
 				// 年纪
 				return {
 					nianJi,
@@ -546,18 +580,11 @@
 	// 	background-color: red;
 	// }
 	.mePage {
-		// // padding: 20rpx;
-		// min-height: 100vh;
-		// // background: url('https://img.cc0.cn//pixabay/2019102220063337385.jpg/w320.jpg') no-repeat;
-		// background: url('https://img.cc0.cn//pixabay/2019102220063337385.jpg/w320.jpg') no-repeat;
-		// 		// 
-		// background-size: 100% auto;
-		// background-color: #f6f6f6;
 		
 		.bodyView{
 			position: absolute;
 			width: 100%;
-			top: 25vh;
+			top: 30vh;
 			left: 0;
 			
 			padding: 20rpx;
@@ -567,12 +594,12 @@
 		}
 
 		.add_btn{
-			width: 100rpx;
-			height: 100rpx;
+			width: 60rpx;
+			height: 60rpx;
 			position: fixed;
 			
 			border-radius: 50%;
-			background-color: #3e3e3e;
+			background-color: $lan;
 			border: 1rpx solid #ffffff;
 			
 			bottom: 10rpx;
@@ -581,8 +608,8 @@
 		.add_btn::after{
 			content: ' ';
 			
-			width: 5rpx;
-			height: 50rpx;
+			width: 3rpx;
+			height: 30rpx;
 			position: absolute;
 			top: 50%;
 			left: 50%;
@@ -592,8 +619,8 @@
 		.add_btn::before{
 			content: ' ';
 			
-			width: 50rpx;
-			height: 5rpx;
+			width: 30rpx;
+			height: 3rpx;
 			position: absolute;
 			top: 50%;
 			left: 50%;
@@ -601,17 +628,6 @@
 			transform: translate(-50%,-50%);
 		}
 		// z-index: -1;
-		// 头像背景块
-		.topView {
-			// position: absolute;
-			// top: 0;
-			// left: 0;
-			width: 100%;
-			height: 30vh;
-			background: url('https://img.cc0.cn//pixabay/2019102220063337385.jpg/w320.jpg') no-repeat;
-			background-size: 100% auto;
-		}
-
 		// 用户信息
 		.userBox {
 			display: flex;
@@ -641,6 +657,32 @@
 				font-weight: 600;
 				color: #FFFFFF;
 
+			}
+		}
+		
+		.topView{
+			// left: 0;
+			width: 100%;
+			height: 35vh;
+			background: url('https://img.cc0.cn//pixabay/2019102220063337385.jpg/w320.jpg') no-repeat;
+			background-size: 100% auto;
+			
+			color: #FFFFFF;
+			
+			display: flex;
+			flex-direction: column;
+			// justify-content: space-between;
+			align-items: center;
+			color: #FFFFFF;
+			>view{
+				margin-top: 15rpx;
+			}
+			span{
+				font-size: 36rpx;
+			}
+			.topView_concent{
+				font-size: 120rpx;
+				font-weight: 600;
 			}
 		}
 
@@ -773,13 +815,20 @@
 			color: #DD524D;
 		}
 		.formView{
-			text-align: left;
+			// text-align: left;
 			height: 70vh;
 			background-color: #f6f6f6;
 			
 			border-top-left-radius: 20rpx;
 			border-top-right-radius: 20rpx;
 			padding:25rpx 30rpx;
+		}
+		.formView>view{
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 20rpx;
 		}
 		.formView_top{
 			display: flex;
@@ -804,32 +853,12 @@
 			color: $lan;
 		}
 		
-		
-		.form_btn_div{
-			display: flex;
-			flex-direction: row;
-			
-			width: 100%;
-			position: absolute;
-			bottom: 10rpx;
-			left: 10rpx;
-			>button{
-				width: 40%;
-			}
-		}
 		.form_name{
 			height: 60rpx;
 			font-size: 36rpx;
 		}
 		.phcolor{
 			color:#bfbec4;
-		}
-		.formView view{
-			display: flex;
-			flex-direction: row;
-			justify-content: space-between;
-			
-			margin-bottom: 20rpx;
 		}
 		.title{
 			color: #1c1a2f;

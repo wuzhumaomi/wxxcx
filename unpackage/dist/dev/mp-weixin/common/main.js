@@ -8,7 +8,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(createApp) {__webpack_require__(/*! uni-pages */ 4);var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+/* WEBPACK VAR INJECTION */(function(createApp, uni) {__webpack_require__(/*! uni-pages */ 4);var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
 var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ 5));
 
 
@@ -63,7 +63,34 @@ wx.login({
   },
   fail: function fail() {},
   complete: function complete() {} });
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createApp"]))
+
+
+
+
+var updateManager = uni.getUpdateManager();
+
+updateManager.onCheckForUpdate(function (res) {
+  // 请求完新版本信息的回调
+  console.log('是否有新版小程序', res.hasUpdate);
+});
+
+updateManager.onUpdateReady(function (res) {
+  uni.showModal({
+    title: '更新提示',
+    content: '新版本已经准备好，是否重启应用？',
+    success: function success(res) {
+      if (res.confirm) {
+        // 新的版本已经下载好，调用 applyUpdate 应用新版本并重启
+        updateManager.applyUpdate();
+      }
+    } });
+
+});
+
+updateManager.onUpdateFailed(function (res) {
+  // 新的版本下载失败
+});
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createApp"], __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

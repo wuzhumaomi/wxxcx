@@ -1,9 +1,0 @@
-{
-  "navigationBarTitleText": "老黄历",
-  "navigationBarBackgroundColor": "#d3ad76",
-  "enablePullDownRefresh": false,
-  "usingComponents": {
-    "u-tag": "/node-modules/uview-ui/components/u-tag/u-tag",
-    "weather": "/pages/weather_page/weather_page"
-  }
-}

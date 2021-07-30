@@ -1,0 +1,14 @@
+{
+  "navigationBarTitleText": "首页",
+  "navigationBarBackgroundColor": "#550000",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "index-u-waterfall-left": "index-u-waterfall-left",
+    "index-u-waterfall-right": "index-u-waterfall-right",
+    "uni-list": "../../node-modules/@dcloudio/uni-ui/lib/uni-list/uni-list",
+    "uni-list-item": "../../node-modules/@dcloudio/uni-ui/lib/uni-list-item/uni-list-item",
+    "u-waterfall": "../../node-modules/uview-ui/components/u-waterfall/u-waterfall",
+    "comp-input": "../components/comp-input/index",
+    "sp-com": "../components/sp-com/index"
+  }
+}

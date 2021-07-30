@@ -3,7 +3,7 @@
   "enablePullDownRefresh": false,
   "usingComponents": {
     "u-no-network": "/node-modules/uview-ui/components/u-no-network/u-no-network",
-    "uni-card": "/components/uni-card/uni-card",
+    "uni-card": "/node-modules/@dcloudio/uni-ui/lib/uni-card/uni-card",
     "u-button": "/node-modules/uview-ui/components/u-button/u-button",
     "u-input": "/node-modules/uview-ui/components/u-input/u-input",
     "u-row": "/node-modules/uview-ui/components/u-row/u-row",

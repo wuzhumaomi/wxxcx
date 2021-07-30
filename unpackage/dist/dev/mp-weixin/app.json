@@ -55,5 +55,6 @@
   "useExtendedLib": {
     "weui": true
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json"
 }
