@@ -155,12 +155,14 @@ var render = function() {
     var m12 =
       obj.type == "Date" && obj.ifShow != 0 ? _vm.pastTime(obj.time) : null
     var m13 =
-      obj.type == "Date" && obj.ifShow != 1 ? _vm.waitingTime(obj.time) : null
+      obj.type == "Date" && obj.ifShow != 0 ? _vm.pastTime(obj.time) : null
     var m14 =
       obj.type == "Date" && obj.ifShow != 1 ? _vm.waitingTime(obj.time) : null
     var m15 =
       obj.type == "Date" && obj.ifShow != 1 ? _vm.waitingTime(obj.time) : null
     var m16 =
+      obj.type == "Date" && obj.ifShow != 1 ? _vm.waitingTime(obj.time) : null
+    var m17 =
       obj.type == "Date" && obj.ifShow != 1 ? _vm.waitingTime(obj.time) : null
     return {
       $orig: $orig,
@@ -178,7 +180,8 @@ var render = function() {
       m13: m13,
       m14: m14,
       m15: m15,
-      m16: m16
+      m16: m16,
+      m17: m17
     }
   })
 
@@ -230,6 +233,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+
 
 
 
@@ -540,6 +544,76 @@ var _default = {
     this.version = 'v' + (accountInfo2.miniProgram.version ? accountInfo2.miniProgram.version : '0.0.0');
   },
   methods: {
+    setTimeData: function setTimeData(date) {
+      var y = date.getFullYear();
+      var m = date.getMonth() + 1;
+      m = m < 10 ? '0' + m : m;
+      var d = date.getDate();
+      d = d < 10 ? '0' + d : d;
+      var h = date.getHours();
+      h = h < 10 ? '0' + h : h;
+      var minute = date.getMinutes();
+      minute = minute < 10 ? '0' + minute : minute;
+      var second = date.getSeconds();
+      second = second < 10 ? '0' + second : second;
+      return y + '-' + m + '-' + d + ' ' + h + ':' + minute + ':' + second;
+    },
+    // 订阅接种通知
+    requestSubscribe: function requestSubscribe(data) {
+      var _t = this;
+      var templateId = 'J20w0hd67i16M3GIXSxZ-aWLS_9iCIDaI_2K543LhMU'; // 模板ID
+
+      // 发起订阅通知请求
+      wx.requestSubscribeMessage({
+        tmplIds: [templateId],
+        success: function success(res) {
+          if (res[templateId] === 'accept') {
+            // 订阅成功，订阅记录存入数据库
+            var db = wx.cloud.database();
+            db.collection("user_subscribe").add({
+              data: {
+                subMsg: {
+                  thing1: {
+                    value: "用户名称" },
+
+                  thing2: {
+                    value: data.name },
+
+                  time3: {
+                    value: _t.setTimeData(new Date(data.time)) },
+
+                  thing4: {
+                    value: '温馨提示' },
+
+                  thing8: {
+                    value: '预约详情' } },
+
+
+                status: 1, //发送状态 0表示已发送，1表示未发送
+                createTime: new Date(),
+                templateId: templateId // 模板ID
+              },
+              success: function success(res) {
+                console.log("成功存入数据库！");
+              },
+              fail: function fail(res) {
+                console.log("存入数据库失败！");
+              } });
+
+            wx.showToast({
+              icon: "success",
+              title: '消息订阅成功' });
+
+          } else {
+            wx.showToast({
+              icon: 'none',
+              title: '消息订阅失败' });
+
+            console.log(res[templateId], '失败');
+          }
+        } });
+
+    },
     typeChange: function typeChange(e) {
       console.log('e:', e.detail.value);
       this.form.type = e.detail.value;

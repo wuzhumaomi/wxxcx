@@ -66,6 +66,8 @@
 						<view class=""  v-if="obj.ifShow != 0">
 							<view class="">
 								到 {{(new Date(obj.time).getMonth() + 1) + '-' + new Date(obj.time).getDate()}} 时间
+								<!--  -->
+								<span style='color: #007AFF; margin-left: 15rpx;' v-if='pastTime(obj.time).tian < 7' @click="requestSubscribe(obj)"> 订阅 </span>
 							</view>
 							<view>
 								还有{{pastTime(obj.time).tian}}天
@@ -111,7 +113,6 @@
 		<mp-dialog title="test" :show="dialogShow" @buttontap="tapDialogButton" :buttons="buttons">
 		 
 		</mp-dialog>
-		
 		
 		<!-- @click="dialogShow = true" -->
 		<view class="add_btn"  @click="open" >
@@ -309,6 +310,76 @@
 			this.version = 'v' + (accountInfo2.miniProgram.version?accountInfo2.miniProgram.version:'0.0.0')
 		},
 		methods: {
+			 setTimeData(date) {
+						var y = date.getFullYear();
+						var m = date.getMonth() + 1;
+						m = m < 10 ? ('0' + m) : m;
+						var d = date.getDate();
+						d = d < 10 ? ('0' + d) : d;
+						var h = date.getHours();
+						h=h < 10 ? ('0' + h) : h;
+						var minute = date.getMinutes();
+						minute = minute < 10 ? ('0' + minute) : minute;
+						var second=date.getSeconds();
+						second=second < 10 ? ('0' + second) : second;
+						return y + '-' + m + '-' + d+' '+h+':'+minute+':'+second;
+			 },
+			 // 订阅接种通知
+			  requestSubscribe(data) {
+					let _t = this
+			    const templateId = 'J20w0hd67i16M3GIXSxZ-aWLS_9iCIDaI_2K543LhMU' // 模板ID
+			
+			    // 发起订阅通知请求
+			    wx.requestSubscribeMessage({
+			      tmplIds: [templateId],
+			      success: (res) => {
+			        if (res[templateId] === 'accept') {
+			          // 订阅成功，订阅记录存入数据库
+			          const db = wx.cloud.database();
+			          db.collection("user_subscribe").add({
+			            data: {
+			              subMsg: {
+											thing1: {
+												value: "用户名称"
+											},
+											thing2: {
+												value: data.name
+											},
+											time3: {
+												value: _t.setTimeData(new Date(data.time)) 
+											},
+											thing4: {
+												value: '温馨提示'
+											},
+											thing8: {
+												value: '预约详情'
+											}
+			              },
+			              status: 1, //发送状态 0表示已发送，1表示未发送
+			              createTime: new Date(),
+			              templateId: templateId // 模板ID
+			            },
+			            success(res) {
+			              console.log("成功存入数据库！")
+			            },
+			            fail(res) {
+			              console.log("存入数据库失败！")
+			            }
+			          })
+			          wx.showToast({
+			            icon: "success",
+			            title: '消息订阅成功',
+			          })
+			        } else {
+			          wx.showToast({
+			            icon: 'none',
+			            title: '消息订阅失败',
+			          })
+			          console.log(res[templateId], '失败')
+			        }
+			      }
+			    })
+			  },
 			typeChange(e){
 					console.log('e:',e.detail.value);
 					this.form.type = e.detail.value
