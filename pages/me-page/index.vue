@@ -159,14 +159,15 @@
 												<radio value="Personnel" /><text>角色</text>
 										</label>
 								</radio-group> -->
+								
 						</view>
 						
-						<view class="uni-form-item uni-column">
-								<view class="title">内容分类</view>
+						<view class="uni-form-item uni-column" >
+								<view v-if="form.type == 'Date'" class="title">内容分类</view>
 								<!-- {{form.ifShow}} -->
-								<uni-data-checkbox mode='tag' :multiple="false" v-model="form.ifShow" :localdata="ifShowType" @change="ifShowChange"></uni-data-checkbox>
+								<uni-data-checkbox v-if="form.type == 'Date'" mode='tag' :multiple="false" v-model="form.ifShow" :localdata="ifShowType" @change="ifShowChange"></uni-data-checkbox>
 								<!-- <uni-data-checkbox v-model="form.ifShow" :localdata="ifShowType"></uni-data-checkbox> -->
-						<!-- 		<radio-group name="ifShow" @change="(e)=>{form.ifShow = e.detail.value}"  >
+								<!-- <radio-group name="ifShow" @change="(e)=>{form.ifShow = e.detail.value}"  >
 										<label>
 												<radio value="0"  checked="true"/><text>纪念日</text>
 										</label>
@@ -178,8 +179,6 @@
 										</label>
 								</radio-group> -->
 						</view>
-				
-				
 				
 			</view>
 			
@@ -234,7 +233,7 @@
 					time: '1999/4/27',
 					name: '',
 					type: 'Date',
-					ifShow: 0,
+					ifShow: 2,
 				},
 		
 				radioList: [
@@ -261,21 +260,7 @@
 				],
 				
 				timeList:[
-					{
-						name:'二傻子',
-						time:'1999/4/27',
-						type:'Personnel'
-					},
-					{
-						name:'生日',
-						time:'1999/4/27',
-						type:'Date'
-					},
-					{
-						name:'在一起紀念日',
-						time:'2020/01/29 22:36:00',
-						type:'Date'
-					},
+			
 				],
 				// miao: 0,
 				// fen: 0,
@@ -321,7 +306,7 @@
 			const accountInfo2 = wx.getAccountInfoSync();
 			console.log(accountInfo2.miniProgram.appId) // 小程序 appId
 			console.log('小程序信息',accountInfo2) // 小程序版本号， 'a.b.c' 这样的形式
-			this.version = 'v' + (accountInfo2.miniProgram.version?accountInfo2.miniProgram.version:'空')
+			this.version = 'v' + (accountInfo2.miniProgram.version?accountInfo2.miniProgram.version:'0.0.0')
 		},
 		methods: {
 			typeChange(e){
@@ -335,7 +320,18 @@
 			open(){
 				// 通过组件定义的ref调用uni-popup方法 ,如果传入参数 ，type 属性将失效 ，仅支持 ['top','left','bottom','right','center']
 				this.$refs.popup.open()
-				
+				this.form = this.$options.data().form 
+				// this.formReset()
+			},
+			formReset: function(e) {
+					console.log('清空数据')
+					this.$refs.popup.close()
+					this.form = this.$options.data().form 
+					// {
+					// time: '1999/4/27',
+					// name: '',
+					// type: 'Date',
+					// ifShow: 0,}
 			},
 			tapDialogButton(e) {
 				console.log(e)
@@ -359,15 +355,6 @@
 						});
 					}
 			},
-			formReset: function(e) {
-					console.log('清空数据')
-					this.$refs.popup.close()
-					this.form = {
-					time: '1999/4/27',
-					name: '',
-					type: 'Date',
-					ifShow: 0,}
-			},
 			// 添加数据
 			add(obj){
 				let _t = this
@@ -376,9 +363,13 @@
 					...obj,
 					openId:wx.getStorageSync('openId')
 				}).then(res=>{
-						uni.showModal({
-								content: '添加成功',
-								showCancel: false
+						// uni.showModal({
+						// 		content: '添加成功',
+						// 		showCancel: false
+						// });
+						uni.showToast({
+						    title: '添加成功',
+						    duration: 2000
 						});
 						_t.getList()
 						console.log(' 添加成功 ',res)
@@ -391,9 +382,13 @@
 					...obj,
 					openId:wx.getStorageSync('openId')
 				}).then(res=>{
-						uni.showModal({
-								content: '删除成功',
-								showCancel: false
+						// uni.showModal({
+						// 		content: '删除成功',
+						// 		showCancel: false
+						// });
+						uni.showToast({
+						    title: '删除成功',
+						    duration: 2000
 						});
 						_t.getList()
 						console.log(' 删除成功 ',res)

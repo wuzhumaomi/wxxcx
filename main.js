@@ -12,12 +12,15 @@ import store from './store'
 Vue.prototype.$store = store
 let appInfo = {
 	appid:'wxcbaa212bcb33c859',
-	secret:'d61ff9c352b709101e99736955e994d6'
+	secret:'d61ff9c352b709101e99736955e994d6',
+	templateId:'J20w0hd67i16M3GIXSxZ-aWLS_9iCIDaI_2K543LhMU'
 }
 Vue.prototype.$appInfo = appInfo
 
 import db from './api'
 Vue.prototype.$db = db
+
+
 
 const app = new Vue({
     ...App,

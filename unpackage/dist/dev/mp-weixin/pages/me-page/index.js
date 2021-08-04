@@ -418,7 +418,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 var _index = _interopRequireDefault(__webpack_require__(/*! @/api/index.js */ 8));
 var _Time = _interopRequireDefault(__webpack_require__(/*! @/pages/components/Time.js */ 58));
 
@@ -465,7 +464,7 @@ var _default = {
         time: '1999/4/27',
         name: '',
         type: 'Date',
-        ifShow: 0 },
+        ifShow: 2 },
 
 
       radioList: [
@@ -491,21 +490,7 @@ var _default = {
 
 
 
-      timeList: [
-      {
-        name: '二傻子',
-        time: '1999/4/27',
-        type: 'Personnel' },
-
-      {
-        name: '生日',
-        time: '1999/4/27',
-        type: 'Date' },
-
-      {
-        name: '在一起紀念日',
-        time: '2020/01/29 22:36:00',
-        type: 'Date' }],
+      timeList: [],
 
 
       // miao: 0,
@@ -552,7 +537,7 @@ var _default = {
     var accountInfo2 = wx.getAccountInfoSync();
     console.log(accountInfo2.miniProgram.appId); // 小程序 appId
     console.log('小程序信息', accountInfo2); // 小程序版本号， 'a.b.c' 这样的形式
-    this.version = 'v' + (accountInfo2.miniProgram.version ? accountInfo2.miniProgram.version : '空');
+    this.version = 'v' + (accountInfo2.miniProgram.version ? accountInfo2.miniProgram.version : '0.0.0');
   },
   methods: {
     typeChange: function typeChange(e) {
@@ -566,7 +551,18 @@ var _default = {
     open: function open() {
       // 通过组件定义的ref调用uni-popup方法 ,如果传入参数 ，type 属性将失效 ，仅支持 ['top','left','bottom','right','center']
       this.$refs.popup.open();
-
+      this.form = this.$options.data().form;
+      // this.formReset()
+    },
+    formReset: function formReset(e) {
+      console.log('清空数据');
+      this.$refs.popup.close();
+      this.form = this.$options.data().form;
+      // {
+      // time: '1999/4/27',
+      // name: '',
+      // type: 'Date',
+      // ifShow: 0,}
     },
     tapDialogButton: function tapDialogButton(e) {
       console.log(e);
@@ -590,15 +586,6 @@ var _default = {
 
       }
     },
-    formReset: function formReset(e) {
-      console.log('清空数据');
-      this.$refs.popup.close();
-      this.form = {
-        time: '1999/4/27',
-        name: '',
-        type: 'Date',
-        ifShow: 0 };
-    },
     // 添加数据
     add: function add(obj) {
       var _t = this;
@@ -607,9 +594,13 @@ var _default = {
       obj), {}, {
         openId: wx.getStorageSync('openId') })).
       then(function (res) {
-        uni.showModal({
-          content: '添加成功',
-          showCancel: false });
+        // uni.showModal({
+        // 		content: '添加成功',
+        // 		showCancel: false
+        // });
+        uni.showToast({
+          title: '添加成功',
+          duration: 2000 });
 
         _t.getList();
         console.log(' 添加成功 ', res);
@@ -622,9 +613,13 @@ var _default = {
       obj), {}, {
         openId: wx.getStorageSync('openId') })).
       then(function (res) {
-        uni.showModal({
-          content: '删除成功',
-          showCancel: false });
+        // uni.showModal({
+        // 		content: '删除成功',
+        // 		showCancel: false
+        // });
+        uni.showToast({
+          title: '删除成功',
+          duration: 2000 });
 
         _t.getList();
         console.log(' 删除成功 ', res);

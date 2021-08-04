@@ -1,0 +1,1 @@
+.joke{padding:20rpx;min-height:100vh;background-color:#eadac0}.joke .list{margin-top:10rpx;padding:20rpx;border:1rpx solid #d3ad76;-webkit-box-shadow:0 0 8rpx #d3ad76;box-shadow:0 0 8rpx #d3ad76;border-radius:6rpx;background-color:#e6caa3}
